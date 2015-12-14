@@ -49,7 +49,7 @@ app.get('/api/search/topic/:topic', function(req, res, next) {
             });
         } else {
             console.log('got data from cache');
-            return res.send(data);
+            return res.send(JSON.parse(data));
         }
     });
 });
@@ -149,7 +149,7 @@ app.get('/mock/search/topic/:topic', function(req, res, next) {
         ]
     };
 
-    return res.send(JSON.stringify(response));
+    return res.send(response);
 });
 
 app.get('/api/search/query/:query', function(req, res, next) {
