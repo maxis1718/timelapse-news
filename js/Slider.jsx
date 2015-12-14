@@ -88,6 +88,7 @@ var Slider = React.createClass({
         return r;
     },
     componentWillUpdate: function(nextProps, nextState) {
+        console.log('slider!!!!');
         var x0 = parseFloat(this.state.left)/100;
         var x1 = parseFloat(nextState.left)/100;
         // inc/dec all event from x0~x1

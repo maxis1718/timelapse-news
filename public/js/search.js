@@ -5,6 +5,11 @@
         $('.search-btn').click(function(e) {
             
             var queryTerm = $('#search-input').val();
+            newsMap.removeAllEvents();
+            document.dispatchEvent(new CustomEvent(
+                'initiate_events',
+                { 'detail': { e: [] } }
+            ));
             
             $.ajax({
                 url: '/mock/search/topic/' + queryTerm
@@ -12,13 +17,11 @@
                 var response = JSON.parse(data);
                 var topic = response.topic;
                 var events = response.events;
-                //
-                newsMap.removeAllEvents();
                 // dispatch to timeline
-                var de = new CustomEvent('initiate_events', { 'detail': {
-                    e: events
-                }});
-                if(document) document.dispatchEvent(de);
+                document.dispatchEvent(new CustomEvent(
+                    'initiate_events',
+                    { 'detail': { e: events } }
+                ));
             });
         });
 

@@ -22,7 +22,7 @@ var newsMap = (function(){
             mapObj = new MapMonster(mapParams);
             mapObj.init();
 
-            mapObj.addEvent({
+            /*mapObj.addEvent({
 
                 // unique event id
                 id: 0,
@@ -39,7 +39,7 @@ var newsMap = (function(){
                 time: {
                     from: '2015-12-14',
                 }
-            });
+            });*/
 
             // add event listeners
             document.addEventListener('add_event', function(e) {
