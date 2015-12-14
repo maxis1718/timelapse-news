@@ -127,6 +127,12 @@ var EventLine = React.createClass({
             var text = info.text;
             // tl-timemarker-content-container-small
             // tl-timemarker-content-small
+            var xx = info.x / self.state.width + 1e-6;
+            var onclickFunction = (function(val) {
+                if (self.refs.slider) {
+                    self.refs.slider.setSlider(val)
+                }
+            }).bind(undefined, xx);
             divs.push(<div className="tl-timemarker" style={{ left: x, top: r*rowHeight+self.props.yEventDisplace }} key={'time-marker-'+index}>
                 <div className="tl-timemarker-timespan" style={{ height: (rowNum-r)*rowHeight }} key="timespan">
                     <div className="tl-timemarker-timespan-content" style={{ height: eventHeight }} key="div">
@@ -134,7 +140,7 @@ var EventLine = React.createClass({
                     <div className="tl-timemarker-line-left" key="lline"></div>
                     <div className="tl-timemarker-line-right" key="rline"></div>
                 </div>
-                <div className="tl-timemarker-content-container" style={{ height: eventHeight, width: info.w }} key='content'>
+                <div className="tl-timemarker-content-container" style={{ height: eventHeight, width: info.w }} onClick={onclickFunction} key='content'>
                     <div className="tl-timemarker-content">
                         <div className="tl-timemarker-text">
                             <h2 className="tl-headline lineClamp3" style={{
@@ -159,7 +165,7 @@ var EventLine = React.createClass({
         var slider;
         if(eventQueue.length) {
             initLeft = String(eventQueue[0].x*100+1e-6)+'%';
-            slider = <Slider initWidth={this.state.width} initLeft={initLeft} eQueue={eventQueue} />;
+            slider = <Slider ref="slider" initWidth={this.state.width} initLeft={initLeft} eQueue={eventQueue} />;
         } else {
             initLeft = '50%';
             slider = undefined;
@@ -167,6 +173,12 @@ var EventLine = React.createClass({
         return <div ref="rootContainer" id="event-line" style={{
             height: this.props.height,
             backgroundColor: '#4d6a79',
+            borderTopWidth: 0,
+            borderLeftWidth: 0,
+            borderRightWidth: 0,
+            borderBottomWidth: 2,
+            borderColor: 'rgba(0,0,0,0.2)',
+            borderStyle: 'solid',
             overflow: 'hidden'
         }}>
             {slider}

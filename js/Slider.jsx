@@ -107,6 +107,12 @@ var Slider = React.createClass({
         }
     },
 
+    setSlider: function(x) {
+        this.setState({
+            left: String(x*100)+'%'
+        });
+    },
+
     render: function() {
         return <div ref="sliderRoot" className="slider" style={{
             position: 'absolute',
