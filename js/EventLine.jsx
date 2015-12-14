@@ -155,12 +155,21 @@ var EventLine = React.createClass({
         var info = this.calculateRenderedEvent();
         var divs = this.calculateRenderedDiv(info);
         var eventQueue = this.generateEventQueue(info.events);
+        var initLeft;
+        var slider;
+        if(eventQueue.length) {
+            initLeft = String(eventQueue[0].x*100+1e-6)+'%';
+            slider = <Slider initWidth={this.state.width} initLeft={initLeft} eQueue={eventQueue} />;
+        } else {
+            initLeft = '50%';
+            slider = undefined;
+        }
         return <div ref="rootContainer" id="event-line" style={{
             height: this.props.height,
             backgroundColor: '#4d6a79',
             overflow: 'hidden'
         }}>
-            <Slider initWidth={this.state.width} eQueue={eventQueue} />
+            {slider}
             {divs}
         </div>;
     }

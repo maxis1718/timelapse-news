@@ -30,7 +30,7 @@ var TimeAxis = React.createClass({
     statics: {
         TIME_UNIT_SCALE: ['minute', 'hour', 'day', 'month', 'year'],
         APPROX_TIME: [60, 3600, 86400, 2592000, 31104000],
-        FORMAT_STRING: ['mm', 'ha', 'DD', 'MMM', 'YYYY']
+        FORMAT_STRING: ['mm', 'HH', 'DD', 'MMM', 'YYYY']
     },
 
     getDefaultProps: function() {
