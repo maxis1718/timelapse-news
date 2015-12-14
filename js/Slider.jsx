@@ -13,6 +13,7 @@ var Slider = React.createClass({
     getDefaultProps: function() {
         return {
             initWidth: 0,
+            initLeft: '0%',
             eQueue: []
         };
     },
@@ -57,6 +58,10 @@ var Slider = React.createClass({
             self.setState({
                 left: String(Math.min(Math.max((e.pageX-self.refs.sliderRoot.clientLeft)/self.state.width*100,0),100))+'%'
             });
+        });
+        //
+        this.setState({
+            left: this.props.initLeft
         });
     },
 

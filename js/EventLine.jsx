@@ -100,7 +100,7 @@ var EventLine = React.createClass({
                     r: r,
                     x: (e.fromTS-self.props.tsLeft) / span * self.state.width,
                     w: (e.toTS-e.fromTS) / span * self.state.width,
-                    text: e.text
+                    text: e.newsContent.title || ''
                 });
                 es.push(e);
             }

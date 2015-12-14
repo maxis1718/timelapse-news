@@ -2,9 +2,14 @@ var React = require('react/addons');
 var _clone = require('lodash/lang/clone');
 var EventLine = require('./EventLine.jsx');
 var TimeAxis = require('./TimeAxis.jsx');
+var Moment = require('moment');
+var UTC_OFFSET = 8;
 
 function getStartTimeFromEvent(event) {
-    return Number(event.fromTimestamp);
+    var dstr = event.time.from;
+    var ts = Moment(dstr).format('X');
+    return Number(ts);
+    //return Number(event.fromTimestamp);
 }
 
 function getEndTimeFromEvent(event) {
