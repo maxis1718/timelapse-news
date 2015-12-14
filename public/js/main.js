@@ -29,7 +29,8 @@ var newsMap = (function(){
                 title: 'Terrorism Fears Fuel France’s National Front',
                 abstract: 'France’s anti-immigration National Front party is well positioned to benefit from the Paris terror attacks in regional elections.',
                 location: 'Paris',
-                meta: '2015/12/14',
+                date: '2015/12/14',
+                img: '20151213055533.jpg'
 
             });
         }
@@ -59,11 +60,17 @@ function MapMonster(params) {
 
     var cardTemplate = 
         '<div class="info-card">' +
-            '<header class="image-wrap"></header>' +
+            '<header class="image-wrap">' +
+            '</header>' +
             '<section class="content-wrap">' +
                 '<div class="title-wrap">%(title)s</div>' +
-                '<div class="meta-wrap">%(meta)s</div>' +
-                '<div class="location-wrap">%(location)s</div>' +
+                '<div class="meta-wrap">' +
+                    '<div class="date-text">%(date)s</div>' +
+                    '<div class="location-wrap">'+
+                        '<i class="fa fa-map-marker"></i>' +
+                        '<span class="location-text">%(location)s</span>' +
+                    '</div>' +
+                '</div>' +
             '</section>' +
             '<section class="abstract-wrap">' +
                 '<div class="abtract-text">%(abstract)s</div>' +
@@ -89,7 +96,7 @@ function MapMonster(params) {
         });
         var infowindow = new google.maps.InfoWindow({
             content: this.composeContent(eventObj),
-            maxWidth: 480
+            maxWidth: 320
         });
         google.maps.event.addListener(marker,'click',function(){
             if (prevInfoWindow !== null) {
