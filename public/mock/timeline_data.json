@@ -1,0 +1,42 @@
+{
+    "title": {
+        "text": {
+            "headline": "Headline Goes Here",
+            "text":     "Your slide text goes here."
+        }
+    },
+    "events": [
+        {
+            "start_date": {
+                "year":         "1900",
+                "month":        "01",
+                "day":          "05",
+                "hour":         "",
+                "minute":       "",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "end_date": {
+                "year":         "1900",
+                "month":        "06",
+                "day":          "07",
+                "hour":         "",
+                "minute":       "",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "media": {
+                "caption":      "test-caption",
+                "credit":       "test-credit",
+                "url":          "http://en.wikifur.com/w/images/f/f3/Troll.png",
+                "thumbnail":    "http://en.wikifur.com/w/images/f/f3/Troll.png"
+            },
+            "text": {
+                "headline": "Event1",
+                "text":     "Text1"
+            }
+        }
+    ]
+}
