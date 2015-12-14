@@ -1,0 +1,216 @@
+{
+    "title": {
+            "media": {
+                "caption":      "Timelapse News",
+                "credit":       "Niger Troops Retake Nigeria Border Town from Boko Haram",
+                "url":          "http://s.imgur.com/images/OverCapacity_700.png",
+                "thumbnail":    "http://i.imgur.com/3TtTwrU.jpg"
+            },
+            "text": {
+                "headline": "The First Event Goes Here",
+                "text":     "The hack we implemented on first TW/JP Joint Hackday."
+            }
+    },
+    "events": [
+        {
+            "start_date": {
+                "year":         "2013",
+                "month":        "12",
+                "day":          "1",
+                "hour":         "24",
+                "minute":       "",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "end_date": {
+                "year":         "2013",
+                "month":        "12",
+                "day":          "2",
+                "hour":         "24",
+                "minute":       "",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "text": {
+                "headline": "YERR Deadline!",
+                "text":     "Please submit YERR by the end of today."
+            }
+        },
+        {
+            "start_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "14",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "end_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "15",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "text": {
+                "headline": "TW/JP Joint Hackday",
+                "text":     "Timelapse News will be demostrated tomorrow"
+            }
+        },
+        {
+            "start_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "14",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "end_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "15",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "text": {
+                "headline": "A event happens at the same time as TW/JP Hackday",
+                "text":     "Meet up with team members"
+            }
+        },
+        {
+            "start_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "13",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "end_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "13",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "media": {
+                "caption":      "Meet up with team members 2",
+                "credit":       "Will you join the event?",
+                "url":          "http://img1.meetupstatic.com/maps/1.0.0/world/1/0/0.png",
+                "thumbnail":    "http://i.imgur.com/3TtTwrU.jpg"
+            },
+            "text": {
+                "headline": "A event happens at the same time as TW/JP Hackday 2",
+                "text":     "Meet up with team members"
+            }
+        },
+        {
+            "start_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "14",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "end_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "15",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "text": {
+                "headline": "Another event happens at the same time as TW/JP Hackday 3",
+                "text":     "Meet up with team members"
+            }
+        },
+        {
+            "start_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "14",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "end_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "15",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "media": {
+                "caption":      "Meet up with team members 4",
+                "credit":       "Will you join the event?",
+                "url":          "http://img1.meetupstatic.com/maps/1.0.0/world/1/0/0.png",
+                "thumbnail":    "http://i.imgur.com/3TtTwrU.jpg"
+            },
+            "text": {
+                "headline": "The first duplicated event",
+                "text":     "Meet up with team members"
+            }
+        },
+        {
+            "start_date": {
+                "year":         "2014",
+                "month":        "12",
+                "day":          "14",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "end_date": {
+                "year":         "2014",
+                "month":        "12",
+                "day":          "15",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "media": {
+                "caption":      "Meet up with team members 5",
+                "credit":       "Will you join the event?",
+                "url":          "http://img1.meetupstatic.com/maps/1.0.0/world/1/0/0.png",
+                "thumbnail":    "http://i.imgur.com/3TtTwrU.jpg"
+            },
+            "text": {
+                "headline": "Another duplicated Event",
+                "text":     "Meet up with team members"
+            }
+        }
+    ]
+}

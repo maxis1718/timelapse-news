@@ -21,7 +21,7 @@ app.get('/', function(req, res, next) {
 });
 
 app.get('/tt', function(req, res) {
-	res.redirect('/timelineTest.html');
+	res.render('tt');
 });
 
 app.get('/test', function(req, res) {

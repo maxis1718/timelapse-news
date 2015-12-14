@@ -1,5 +1,5 @@
 
-var timeline = new TL.Timeline('timeline', '../data/demo.json');
+//var timeline = new TL.Timeline('timeline', '../mock/timeline_data.json');
 
 window.onresize = function(event) {
     timeline.updateDisplay();
