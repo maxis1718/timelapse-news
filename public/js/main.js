@@ -27,7 +27,10 @@ var newsMap = (function(){
                 lat: 48.856614,
                 lng: 2.352222,
                 title: 'Terrorism Fears Fuel France’s National Front',
-                abstract: 'France’s anti-immigration National Front party is well positioned to benefit from the Paris terror attacks in regional elections.'
+                abstract: 'France’s anti-immigration National Front party is well positioned to benefit from the Paris terror attacks in regional elections.',
+                location: 'Paris',
+                meta: '2015/12/14',
+
             });
         }
     });
@@ -43,6 +46,7 @@ var newsMap = (function(){
 
 })();
 
+
 function MapMonster(params) {
     var oMap = this;
 
@@ -53,14 +57,27 @@ function MapMonster(params) {
 
     var prevInfoWindow = null;
 
+    var cardTemplate = 
+        '<div class="info-card">' +
+            '<header class="image-wrap"></header>' +
+            '<section class="content-wrap">' +
+                '<div class="title-wrap">%(title)s</div>' +
+                '<div class="meta-wrap">%(meta)s</div>' +
+                '<div class="location-wrap">%(location)s</div>' +
+            '</section>' +
+            '<section class="abstract-wrap">' +
+                '<div class="abtract-text">%(abstract)s</div>' +
+            '</section>' +
+            '<footer></footer>' +
+        '</div>';
+
     //public methods
     oMap.init = function() {
         map = new google.maps.Map(params.mountPoint, params.options);
     };
 
     oMap.composeContent = function(eventObj) {
-        return '<div class="info-card"><h1>' + eventObj.title + 
-                   '</h1><div>' + eventObj.abstract + '</div></div>';
+        return sprintf(cardTemplate, eventObj);
     };
 
     oMap.addEvent = function (eventObj) {
@@ -71,7 +88,8 @@ function MapMonster(params) {
             title:"You are here!"
         });
         var infowindow = new google.maps.InfoWindow({
-            content: this.composeContent(eventObj)
+            content: this.composeContent(eventObj),
+            maxWidth: 480
         });
         google.maps.event.addListener(marker,'click',function(){
             if (prevInfoWindow !== null) {

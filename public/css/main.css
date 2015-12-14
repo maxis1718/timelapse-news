@@ -1,1 +1,31 @@
-html, body { height: 100%; margin: 0; padding: 0; }
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* info-card */
+.info-card {
+
+}
+.info-card .image-wrap {
+
+}
+.info-card .content-wrap {
+
+}
+.info-card .content-wrap .title-wrap {
+
+}
+.info-card .content-wrap .meta-wrap {
+
+}
+.info-card .content-wrap .location-wrap {
+
+}
+.info-card .abstract-wrap {
+
+}
+.info-card .abstract-wrap .abtract-text {
+
+}
