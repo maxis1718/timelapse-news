@@ -2,6 +2,9 @@ var express = require('express');
 var request = require('request');
 var path = require('path');
 var exphbs = require('express-handlebars');
+var exec = require('child_process').exec;
+var fs = require('fs');
+var md5 = require('md5');
 
 var app = express();
 
@@ -24,6 +27,34 @@ app.get('/', function(req, res, next) {
 });
 
 app.get('/api/search/topic/:topic', function(req, res, next) {
+
+    // get topic
+    var cachedFile = path.join('cache', md5(req.params.topic)+'.json');
+
+    // check cache
+    fs.readFile(cachedFile, function(err, data) {
+        if(err) {
+            console.log('read err:',err);
+            // try to get result from jar
+            var cmd = "java -jar Timelapse.jar '"+ req.params.topic +"'";
+            exec(cmd, function(error, stdout, stderr) {
+                console.log('get data from jar, save to cache');
+                // get result, write to cache
+                fs.writeFile(cachedFile, stdout, function(err){
+                    if (err) {
+                        console.log('write err:', err);
+                    }
+                    return res.send(stdout);
+                });
+            });
+        } else {
+            console.log('got data from cache');
+            return res.send(data);
+        }
+    });
+});
+
+app.get('/mock/search/topic/:topic', function(req, res, next) {
 
     // mock data for backend
     // ...
