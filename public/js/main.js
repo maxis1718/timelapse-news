@@ -1,4 +1,4 @@
-var myMap = (function(){
+var newsMap = (function(){
 
     var mapObj = null;
     var mapContainerId = '#map-canvas';
@@ -8,10 +8,10 @@ var myMap = (function(){
             mountPoint: document.querySelector(mapContainerId) || 0,
             options: {
                 center: {
-                    lat: -34.397,
-                    lng: 150.644
+                    lat: 48.856614,
+                    lng: 2.352222
                 },
-                zoom: 8,
+                zoom: 4,
                 zoomControl: false,
                 streetViewControl: false,
                 mapTypeControl: false
@@ -24,16 +24,19 @@ var myMap = (function(){
 
             mapObj.addEvent({
                 id: 0,
-                lat: -34.397,
-                lng: 150.644,
-                title: 'test title',
-                abstract: 'abstract'
+                lat: 48.856614,
+                lng: 2.352222,
+                title: 'Terrorism Fears Fuel France’s National Front',
+                abstract: 'France’s anti-immigration National Front party is well positioned to benefit from the Paris terror attacks in regional elections.'
             });
         }
     });
 
     return {
-        removeMarker: function(eventId) {
+        addEvent: function(eventObj) {
+            mapObj.addEvent(eventObj);
+        },
+        removeEvent: function(eventId) {
             mapObj.removeEvent(eventId);
         }   
     }
@@ -48,9 +51,16 @@ function MapMonster(params) {
 
     var markers = [];
 
+    var prevInfoWindow = null;
+
     //public methods
     oMap.init = function() {
         map = new google.maps.Map(params.mountPoint, params.options);
+    };
+
+    oMap.composeContent = function(eventObj) {
+        return '<div class="info-card"><h1>' + eventObj.title + 
+                   '</h1><div>' + eventObj.abstract + '</div></div>';
     };
 
     oMap.addEvent = function (eventObj) {
@@ -60,8 +70,16 @@ function MapMonster(params) {
             map:map,
             title:"You are here!"
         });
+        var infowindow = new google.maps.InfoWindow({
+            content: this.composeContent(eventObj)
+        });
         google.maps.event.addListener(marker,'click',function(){
-            console.log('kerker');
+            if (prevInfoWindow !== null) {
+                prevInfoWindow.close();
+            }
+            
+            infowindow.open(map, marker);
+            prevInfoWindow = infowindow;
         });
 
         markers.push({
