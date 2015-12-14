@@ -130,7 +130,7 @@ var EventLine = React.createClass({
             var xx = info.x / self.state.width + 1e-6;
             var onclickFunction = (function(val) {
                 if (self.refs.slider) {
-                    self.refs.slider.setSlider(val)
+                    self.refs.slider.setSlider(val);
                 }
             }).bind(undefined, xx);
             divs.push(<div className="tl-timemarker" style={{ left: x, top: r*rowHeight+self.props.yEventDisplace }} key={'time-marker-'+index}>

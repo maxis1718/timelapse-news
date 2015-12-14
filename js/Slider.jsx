@@ -31,6 +31,10 @@ var Slider = React.createClass({
         return initState;
     },
 
+    clearDrift: function(x) {
+        if (this.itv) clearInterval(this.itv);
+    },
+
     updateWidth: function() {
         var rootContainer = this.refs.sliderRoot;
         var rootContainerWidth = rootContainer.clientWidth;
@@ -53,6 +57,7 @@ var Slider = React.createClass({
         slider.dragging = false;
         slider.onmousedown = function() {
             slider.dragging = true;
+            self.clearDrift();
         }
         window.addEventListener('mouseup', function(e) {
             slider.dragging = false;
@@ -113,6 +118,7 @@ var Slider = React.createClass({
     },
 
     setSlider: function(x) {
+        this.clearDrift();
         this.setState({
             left: String(x*100)+'%'
         });
@@ -137,6 +143,11 @@ var Slider = React.createClass({
                 });
             }, self.props.refreshInterval);
         };
+        //
+        function doubleClickHandler(e) {
+            var x = (e.pageX-self.refs.sliderRoot.clientLeft)/self.state.width;
+            self.setSlider(x);
+        }
         //
         return <div ref="sliderRoot" className="slider" style={{
             position: 'absolute',
@@ -173,7 +184,7 @@ var Slider = React.createClass({
                 width: this.state.left
                 //backgroundColor: '#ff0000',
                 //opacity: 0.2
-            }} onClick={sliderDriftHandler} />
+            }} onClick={sliderDriftHandler} onDoubleClick={doubleClickHandler} />
             <div ref="rightPane" key="right-div" style={{
                 height: '100%',
                 overflow: 'hidden',
@@ -181,7 +192,7 @@ var Slider = React.createClass({
                 zIndex: 10
                 //backgroundColor: '#aaff00',
                 //opacity: 0.2
-            }} onClick={sliderDriftHandler}  />
+            }} onClick={sliderDriftHandler} onDoubleClick={doubleClickHandler} />
         </div>
     }
 
