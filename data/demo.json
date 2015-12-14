@@ -1,0 +1,48 @@
+{
+    "title": {
+            "media": {
+                "caption":      "Timelapse News",
+                "credit":       "Niger Troops Retake Nigeria Border Town from Boko Haram",
+                "url":          "http://www.ndtv.com/world-news/chad-niger-troops-retake-nigeria-border-town-from-boko-haram-751240",
+                "thumbnail":    "http://i.imgur.com/3TtTwrU.jpg"
+            },
+            "text": {
+                "headline": "Taoyuan blames ex-official for fire deaths",
+                "text":     "The Taoyuan City Government yesterday implicated former deputy county commissioner Yeh Shih-wen (葉世文) in the deaths of six firefighters after a fire in a bowling alley in Sinwu District (新屋). Taoyuan Mayor Cheng Wen-tsan (鄭文燦) accused Yeh of holding a special meeting on April 2 last year to help the owners of the plot of land on which the bowling alley was built circumvent regulations on land use, adding that the land had been registered for agricultural use. At the meeting, it was decided that any decisions regarding the land would be made by the department of agriculture instead of the bureau of urban development, Cheng said. A report was changed to say that the building was not public property, Cheng said. The decision was an error and it indicated administrative laziness among civil servants in the then-county government, Cheng said. The contents of the meeting must be looked into and laid open for public scrutiny, Cheng added. There might have been mistakes made by the past administration, but we must face facts and not seek to cover them up, Cheng said, adding that the city government would fully cooperate with investigations. “Every mistake that is uncovered in the investigation will become the basis for government’s reforms,” Cheng said. Cheng said that the Sinwu case involved an illegal construction built 20 years ago that had in the past year been flagged for a joint inspection, but the case had not been handled properly. The problem clearly does not lie with any individual public servant, but with the local administration of the time, Cheng said, adding that a new government is expected to correct the mistakes of previous governments. According to preliminary investigations by the Taoyuan District Prosecutors’ Office, a then-county official surnamed Chang (張) and a Sinwu District Office official surnamed Cheng (鄭) have been accused of colluding over the construction of the building and are in custody. The Department of Agriculture said it had alerted the Department of Public Works that the construction was in violation of regulations and should be prioritized for removal, but the district office said it had been awaiting further investigations."
+            }
+    },
+    "events": [
+        {
+            "start_date": {
+                "year":         "1900",
+                "month":        "01",
+                "day":          "05",
+                "hour":         "",
+                "minute":       "",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "end_date": {
+                "year":         "1900",
+                "month":        "06",
+                "day":          "07",
+                "hour":         "",
+                "minute":       "",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "media": {
+                "caption":      "media caption",
+                "credit":       "media credit",
+                "url":          "http://google.com",
+                "thumbnail":    "http://i.imgur.com/3TtTwrU.jpg"
+            },
+            "text": {
+                "headline": "Headline Goes Here",
+                "text":     "Your slide text goes here."
+            }
+        }
+    ]
+}

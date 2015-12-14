@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge, chrome=1" />
+        <title>Timelapse News</title>
+        <link rel="stylesheet" type="text/css" href="css/timeline.css">
+        <link rel="stylesheet" href="fonts/font.default.css?v1">
+        <script src="js/timeline.js"></script>
+    </head>
+    <body>
+        <div id="timeline" style="width: 100%; height: 600px"></div>
+        
+        <script>
+            // An example to create the timeline and pass a Google spreadsheet as the data source
+            //var timeline = new TL.Timeline('timeline', 'https://docs.google.com/spreadsheets/d/1JiVI7FSY6FrZSGAs2O_qLnZyeRWvKI80rxhYOKlL0OE/pubhtml');
+
+            // create the timeline and pass a JSON object as the data source
+            var timeline = new TL.Timeline('timeline', 'data/demo.json');
+
+            window.onresize = function(event) {
+                timeline.updateDisplay();
+            };
+        </script>
+    </body>
+</html>
