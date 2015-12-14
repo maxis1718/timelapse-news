@@ -48,6 +48,10 @@ app.get('/api/search/query/:query', function(req, res, next) {
     return res.send(JSON.stringify(response));
 });
 
+app.get('/tt', function(req, res) {
+	res.render('tt');
+});
+
 app.get('/test', function(req, res) {
     res.render('test');
 });

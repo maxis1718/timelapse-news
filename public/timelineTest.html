@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- coding : utf-8 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Timelapsed News</title>
+
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" href="static/img/favicon.png"> -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/timeline.css" type="text/css">
+    <!--<link rel="stylesheet" href="fonts/font.default.css?v1">-->
+
+    <!-- JS -->
+
+    <!-- external -->
+    <!--<script src="//cdn.jsdelivr.net/bluebird/3.0.5/bluebird.min.js"></script>-->
+
+    <!-- <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,300|Dosis:400,200' rel='stylesheet' type='text/css'> -->
+
+    <!--<script type="text/javascript" src="js/jquery.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/jquery.fullpage.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/lib.js"></script>-->
+    <!--<script type="text/javascript" src="js/d3.min.js"></script>-->
+
+    <script type="text/javascript" src="js/timeline.js"></script>
+
+</head>
+
+<body>
+    <div id="timeline">
+        TEST
+    </div>
+
+    <!-- draw timeline -->
+    <script>
+        var timeline = new TL.Timeline('timeline', 'mock/timeline_data.json');
+    </script>
+
+    <!-- update timeline on browser resize -->
+    <script>
+    window.onresize = function(event) {
+        timeline.updateDisplay();
+    }
+    </script>
+
+</body>
+
+</html>
