@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/maxis1718/timelapse-news",
   "dependencies": {
+    "debug": "^2.2.0",
     "express": "^4.13.3"
   }
 }
