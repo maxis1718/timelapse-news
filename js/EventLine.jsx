@@ -167,6 +167,12 @@ var EventLine = React.createClass({
         return <div ref="rootContainer" id="event-line" style={{
             height: this.props.height,
             backgroundColor: '#4d6a79',
+            borderTopWidth: 0,
+            borderLeftWidth: 0,
+            borderRightWidth: 0,
+            borderBottomWidth: 2,
+            borderColor: 'rgba(0,0,0,0.2)',
+            borderStyle: 'solid',
             overflow: 'hidden'
         }}>
             {slider}
