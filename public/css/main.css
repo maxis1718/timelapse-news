@@ -17,7 +17,7 @@ p {
 }
 
 #wrapper {
-    padding: 64px 0 200px 0;
+    padding: 64px 0 218px 0;
     position:absolute;
     top:0;
     bottom:0;
@@ -77,8 +77,8 @@ p {
 }
 
 footer {
-    margin-bottom: -200px;
-    height: 200px;
+    margin-bottom: -218px;
+    height: 218px;
     position: relative;
 }
 
