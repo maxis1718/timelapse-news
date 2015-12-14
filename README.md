@@ -4,7 +4,7 @@
 
 ```sh
 npm install
-node index.js // or use nodemon
+npm start
 ```
 
 [http://localhost:3000](http://localhost:3000)
