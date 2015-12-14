@@ -1,4 +1,4 @@
-(function(){
+var myMap = (function(){
 
     var mapObj = null;
     var mapContainerId = '#map-canvas';
@@ -17,16 +17,27 @@
                 mapTypeControl: false
             }
         };
+
         if (mapParams.mountPoint) {
             mapObj = new MapMonster(mapParams);
             mapObj.init();
 
             mapObj.addEvent({
+                id: 0,
                 lat: -34.397,
-                lng: 150.644
+                lng: 150.644,
+                title: 'test title',
+                abstract: 'abstract'
             });
         }
     });
+
+    return {
+        removeMarker: function(eventId) {
+            mapObj.removeEvent(eventId);
+        }   
+    }
+
 })();
 
 function MapMonster(params) {
@@ -34,6 +45,8 @@ function MapMonster(params) {
 
     // private property
     var map = null;
+
+    var markers = [];
 
     //public methods
     oMap.init = function() {
@@ -50,10 +63,21 @@ function MapMonster(params) {
         google.maps.event.addListener(marker,'click',function(){
             console.log('kerker');
         });
+
+        markers.push({
+            id: eventObj.id,
+            title: eventObj.title,
+            abstract: eventObj.abstract,
+            marker: marker
+        });
     };
 
     oMap.removeEvent = function (eventId) {
-
+        for (i = 0; i < markers.length; ++i) {
+            if (markers[i].id === eventId) {
+                markers[i].marker.setMap(null);
+            }
+        }
     };
 
     //private methods
