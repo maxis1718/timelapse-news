@@ -19,6 +19,7 @@
   "dependencies": {
     "exphbs": "^1.0.1",
     "express": "^4.13.3",
-    "express-handlebars": "^2.0.1"
+    "express-handlebars": "^2.0.1",
+    "request": "^2.67.0"
   }
 }
