@@ -1,4 +1,5 @@
 var React = require('react/addons');
+var Slider = require('./Slider.jsx');
 
 var EventLine = React.createClass({
 
@@ -98,8 +99,8 @@ var EventLine = React.createClass({
                 </div>
             </div>)
         });
-        console.log(this.props.events);
-        console.log(divs);
+        //console.log(this.props.events);
+        //console.log(divs);
         return divs;
     },
 
@@ -110,6 +111,7 @@ var EventLine = React.createClass({
             backgroundColor: '#4d6a79',
             overflow: 'hidden'
         }}>
+            <Slider initWidth={this.state.width} />
             {divs}
         </div>;
     }
