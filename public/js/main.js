@@ -65,7 +65,6 @@ var newsMap = (function(){
 
 })();
 
-
 function MapMonster(params) {
     var oMap = this;
 
@@ -113,6 +112,12 @@ function MapMonster(params) {
         return sprintf(cardTemplate, cardPayload);
     };
 
+    oMap.stopBounce = function (marker) {
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        }
+    };
+
     oMap.addEvent = function (eventObj) {
         console.log('receive:', eventObj);
         var latlng = new google.maps.LatLng(eventObj.geo.latitude, eventObj.geo.longtitude);
@@ -120,11 +125,17 @@ function MapMonster(params) {
         var marker = new google.maps.Marker({
             position: latlng,
             map: map,
+            animation: google.maps.Animation.BOUNCE,
             title: eventObj.newsContent.title
         });
 
+        // trigger click after bouncing for 400 ms
+        setTimeout(function() {
+            google.maps.event.trigger(marker, 'click');
+        }, 400);
+
         var infowindow = new google.maps.InfoWindow({
-            content: this.composeContent(eventObj),
+            content: oMap.composeContent(eventObj),
             maxWidth: 300
         });
 
@@ -132,7 +143,7 @@ function MapMonster(params) {
             if (prevInfoWindow !== null) {
                 prevInfoWindow.close();
             }
-            
+            oMap.stopBounce(marker);
             infowindow.open(map, marker);
             prevInfoWindow = infowindow;
         });
