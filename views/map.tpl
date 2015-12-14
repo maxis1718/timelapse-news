@@ -8,15 +8,7 @@
   </head>
   <body>
     <div id="map"></div>
-    <script type="text/javascript">
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
-    </script>
+    <script src="/js/main.js"></script>
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV5ZcyMrGzXUdr8VUzo_lnqDLa24pCNF8&callback=initMap">
     </script>
