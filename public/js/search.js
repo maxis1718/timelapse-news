@@ -7,26 +7,18 @@
             var queryTerm = $('#search-input').val();
             
             $.ajax({
-                url: '/api/search/topic/' + queryTerm
+                url: '/mock/search/topic/' + queryTerm
             }).success(function(data, status, xhr) {
-                
                 var response = JSON.parse(data);
-
+                var topic = response.topic;
+                var events = response.events;
+                //
                 newsMap.removeAllEvents();
-
-                $.each(response.events, function(index, event) {
-
-                    newsMap.addEvent({
-                        id: index,
-                        lat: event.geo.latitude,
-                        lng: event.geo.longtitude,
-                        title: event.newsContent.title,
-                        abstract: event.newsContent.abstract,
-                        location: event.geo.location,
-                        date: event.time.from
-                        //img: not ready
-                    });
-                });
+                // dispatch to timeline
+                var de = new CustomEvent('initiate_events', { 'detail': {
+                    e: events
+                }});
+                if(document) document.dispatchEvent(de);
             });
         });
 

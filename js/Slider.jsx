@@ -36,12 +36,14 @@ var Slider = React.createClass({
     },
 
     updateWidth: function() {
-        var rootContainer = this.refs.sliderRoot;
+        var rootContainer = this.refs.sliderRoot || {};
         var rootContainerWidth = rootContainer.clientWidth;
         if (!isNaN(rootContainerWidth)) {
-            this.setState({
-                width: rootContainerWidth,
-            });
+            if (this.state.width!=rootContainerWidth) {
+                this.setState({
+                    width: rootContainerWidth,
+                });
+            }
         }
     },
 
@@ -115,6 +117,10 @@ var Slider = React.createClass({
                 if(document) document.dispatchEvent(de);
             }
         }
+    },
+
+    componentDidUpdate: function() {
+        this.updateWidth();
     },
 
     setSlider: function(x) {

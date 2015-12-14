@@ -31,7 +31,7 @@ var Timeline = React.createClass({
         }
     },
 
-    getInitialState: function() {
+    getSomeState: function() {
         var initState = {
             events: [],
             tsLeft: null,
@@ -80,6 +80,7 @@ var Timeline = React.createClass({
     },
 
     render: function() {
+        var curState = this.getSomeState();
         return <div id="timeline" style={{
             display: 'block',
             width: '100%',
@@ -88,10 +89,10 @@ var Timeline = React.createClass({
             overflow: 'hidden'
         }}>
             <div style={{ display: 'block' }}>
-                <EventLine events={this.state.events} tsLeft={this.state.tsLeft} tsRight={this.state.tsRight}/>
+                <EventLine events={curState.events} tsLeft={curState.tsLeft} tsRight={curState.tsRight}/>
             </div>
             <div style={{ display: 'block' }}>
-                <TimeAxis tsLeft={this.state.tsLeft} tsRight={this.state.tsRight}/>
+                <TimeAxis tsLeft={curState.tsLeft} tsRight={curState.tsRight}/>
             </div>
         </div>;
     }

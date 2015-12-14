@@ -83,17 +83,24 @@ var TimeAxis = React.createClass({
     },
 
     updateWidth: function() {
-        var rootContainer = this.refs.rootContainer;
+        var rootContainer = this.refs.rootContainer || {};
         var rootContainerWidth = rootContainer.clientWidth;
         // debug('updateWidth(), rootContainer width:', rootContainerWidth);
         if (!isNaN(rootContainerWidth)) {
             var span = this.props.tsRight - this.props.tsLeft;
             var minTime = this.props.minScaleWidth / rootContainerWidth * span;
-            this.setState({
-                width: rootContainerWidth,
-                timestring: this.getBestTimestring(minTime)
-            });
+            var bestTimestring = this.getBestTimestring(minTime);
+            if (this.state.width!=rootContainerWidth || this.state.timestring!=bestTimestring) {
+                this.setState({
+                    width: rootContainerWidth,
+                    timestring: bestTimestring
+                });
+            }
         }
+    },
+
+    componentDidUpdate: function() {
+        this.updateWidth();
     },
 
     componentDidMount: function() {
@@ -149,6 +156,7 @@ var TimeAxis = React.createClass({
     },
 
     render: function() {
+        console.log('timeAxis rerender ', this.props.tsLeft, this.props.tsRight);
         var scales = this.calculateScales();
         var inner = this.renderAxisFromScale(scales);
         return <div ref="rootContainer" id="time-axis" className="tl-timeaxis" style={{

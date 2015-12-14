@@ -24,16 +24,18 @@ var EventLine = React.createClass({
     },
 
     updateWidth: function() {
-        var rootContainer = this.refs.rootContainer;
+        var rootContainer = this.refs.rootContainer || {};
         var rootContainerWidth = rootContainer.clientWidth;
         // debug('updateWidth(), rootContainer width:', rootContainerWidth);
         if (!isNaN(rootContainerWidth)) {
             var span = this.props.tsRight - this.props.tsLeft;
             var cd = rootContainerWidth>0 ? this.props.minEventWidth / rootContainerWidth * span : 0;
-            this.setState({
-                width: rootContainerWidth,
-                rowCooldown: cd
-            });
+            if (this.state.width!=rootContainerWidth || this.state.rowCooldown!=cd) {
+                this.setState({
+                    width: rootContainerWidth,
+                    rowCooldown: cd
+                });
+            }
         }
     },
 
@@ -41,6 +43,9 @@ var EventLine = React.createClass({
         if(window) {
             window.addEventListener('resize', this.updateWidth);
         }
+        this.updateWidth();
+    },
+    componentDidUpdate: function() {
         this.updateWidth();
     },
 
@@ -158,6 +163,7 @@ var EventLine = React.createClass({
     },
 
     render: function() {
+        console.log('eventLine rerender', this.props.events);
         var info = this.calculateRenderedEvent();
         var divs = this.calculateRenderedDiv(info);
         var eventQueue = this.generateEventQueue(info.events);
