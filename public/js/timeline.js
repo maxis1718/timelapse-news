@@ -11982,10 +11982,6 @@ https://incident57.com/codekit/
 	// @codekit-prepend "media/types/TL.Media.Wikipedia.js";
 	// @codekit-prepend "media/types/TL.Media.YouTube.js";
 
-// STORYSLIDER
-	// @codekit-prepend "slider/TL.Slide.js";
-	// @codekit-prepend "slider/TL.SlideNav.js";
-	// @codekit-prepend "slider/TL.StorySlider.js";
 
 // TIMENAV
 	// @codekit-prepend "timenav/TL.TimeNav.js";
@@ -12014,7 +12010,7 @@ TL.Timeline = TL.Class.extend({
 		// DOM ELEMENTS
 		this._el = {
 			container: {},
-            mainview: {},
+            //mainview: {},
 			timenav: {},
 			menubar: {}
 		};
@@ -12027,7 +12023,7 @@ TL.Timeline = TL.Class.extend({
 		}
 
 		// Slider
-		this._mainview = {};
+		//this._mainview = {};
 
 		// Style Sheet
 		this._style_sheet = new TL.StyleSheet();
@@ -12039,7 +12035,7 @@ TL.Timeline = TL.Class.extend({
 		this._menubar = {};
 
 		// Loaded State
-		this._loaded = {mainview:false, timenav:false};
+		this._loaded = {/*mainview:false,*/ timenav:false};
 
 		// Data Object
 		this.config = null;
@@ -12048,7 +12044,7 @@ TL.Timeline = TL.Class.extend({
 			script_path: 				"",
 			height: 					this._el.container.offsetHeight,
 			width: 						this._el.container.offsetWidth,
-			debug: 						false,
+			debug: 						true,
 			is_embed: 					false,
 			is_full_embed: 				false,
 			hash_bookmark: false,
@@ -12089,7 +12085,7 @@ TL.Timeline = TL.Class.extend({
 
 		// Animation Objects
 		this.animator_timenav = null;
-		this.animator_mainview = null;
+		//this.animator_mainview = null;
 		this.animator_menubar = null;
 
 		// Add message to DOM
@@ -12171,7 +12167,7 @@ TL.Timeline = TL.Class.extend({
 		if (this.current_id != id) {
 			this.current_id = id;
 			this._timenav.goToId(this.current_id);
-			this._mainview.goToId(this.current_id, false, true);
+			//this._mainview.goToId(this.current_id, false, true);
 			this.fire("change", {unique_id: this.current_id}, this);
 		}
 	},
@@ -12381,13 +12377,13 @@ TL.Timeline = TL.Class.extend({
 		}
 
 		// Set mainview Height
-		this.options.mainview_height = (this.options.height - this.options.timenav_height);
+		//this.options.mainview_height = (this.options.height - this.options.timenav_height);
 
 		// Positon Menu
 		if (this.options.timenav_position == "top") {
 			menu_position = ( Math.ceil(this.options.timenav_height)/2 ) - (this._el.menubar.offsetHeight/2) - (39/2) ;
 		} else {
-			menu_position = Math.round(this.options.mainview_height + 1 + ( Math.ceil(this.options.timenav_height)/2 ) - (this._el.menubar.offsetHeight/2) - (35/2));
+			menu_position = Math.round(/*this.options.mainview_height +*/ 1 + ( Math.ceil(this.options.timenav_height)/2 ) - (this._el.menubar.offsetHeight/2) - (35/2));
 		}
 
 
@@ -12413,14 +12409,14 @@ TL.Timeline = TL.Class.extend({
 			this._el.timenav.style.height = Math.ceil(this.options.timenav_height) + "px";
 
 			// Animate mainview
-			if (this.animator_mainview) {
-				this.animator_mainview.stop();
-			}
-			this.animator_mainview = TL.Animate(this._el.mainview, {
-				height:   this.options.mainview_height + "px",
-				duration:   duration/2,
-				easing:   TL.Ease.easeOutStrong
-			});
+			//if (this.animator_mainview) {
+				//this.animator_mainview.stop();
+			//}
+			//this.animator_mainview = TL.Animate(this._el.mainview, {
+				//height:   this.options.mainview_height + "px",
+				//duration:   duration/2,
+				//easing:   TL.Ease.easeOutStrong
+			//});
 
 			// Animate Menubar
 			if (this.animator_menubar) {
@@ -12438,7 +12434,7 @@ TL.Timeline = TL.Class.extend({
 			this._el.timenav.style.height = Math.ceil(this.options.timenav_height) + "px";
 
 			// mainview
-			this._el.mainview.style.height = this.options.mainview_height + "px";
+			//this._el.mainview.style.height = this.options.mainview_height + "px";
 
 			// Menubar
 			this._el.menubar.style.top = menu_position + "px";
@@ -12449,7 +12445,7 @@ TL.Timeline = TL.Class.extend({
 		}
 		// Update Component Displays
 		this._timenav.updateDisplay(this.options.width, this.options.timenav_height, animate);
-		this._mainview.updateDisplay(this.options.width, this.options.mainview_height, animate, this.options.layout);
+		//this._mainview.updateDisplay(this.options.width, this.options.mainview_height, animate, this.options.layout);
 
 		// Apply class
 		this._el.container.className = display_class;
@@ -12534,9 +12530,9 @@ TL.Timeline = TL.Class.extend({
 		// Create Layout
 		if (this.options.timenav_position == "top") {
 			this._el.timenav		= TL.Dom.create('div', 'tl-timenav', this._el.container);
-			this._el.storyslider	= TL.Dom.create('div', 'tl-storyslider', this._el.container);
+			//this._el.storyslider	= TL.Dom.create('div', 'tl-storyslider', this._el.container);
 		} else {
-			this._el.storyslider  	= TL.Dom.create('div', 'tl-storyslider', this._el.container);
+			//this._el.storyslider  	= TL.Dom.create('div', 'tl-storyslider', this._el.container);
 			this._el.timenav		= TL.Dom.create('div', 'tl-timenav', this._el.container);
 		}
 
@@ -12546,7 +12542,7 @@ TL.Timeline = TL.Class.extend({
 		// Initial Default Layout
 		this.options.width        = this._el.container.offsetWidth;
 		this.options.height       = this._el.container.offsetHeight;
-		this._el.storyslider.style.top  = "1px";
+		//this._el.storyslider.style.top  = "1px";
 
 		// Set TimeNav Height
 		this.options.timenav_height = this._calculateTimeNavHeight(this.options.timenav_height);
@@ -12565,18 +12561,18 @@ TL.Timeline = TL.Class.extend({
         }
 
 		// Create StorySlider
-		this._storyslider = new TL.StorySlider(this._el.storyslider, this.config, this.options);
-		this._storyslider.on('loaded', this._onStorySliderLoaded, this);
-		this._storyslider.init();
+		//this._storyslider = new TL.StorySlider(this._el.storyslider, this.config, this.options);
+		//this._storyslider.on('loaded', this._onStorySliderLoaded, this);
+		//this._storyslider.init();
 
 		// Create Menu Bar
 		this._menubar = new TL.MenuBar(this._el.menubar, this._el.container, this.options);
 
 		// LAYOUT
 		if (this.options.layout == "portrait") {
-			this.options.storyslider_height = (this.options.height - this.options.timenav_height - 1);
+			//this.options.storyslider_height = (this.options.height - this.options.timenav_height - 1);
 		} else {
-			this.options.storyslider_height = (this.options.height - 1);
+			//this.options.storyslider_height = (this.options.height - 1);
 		}
 
 
@@ -12592,10 +12588,10 @@ TL.Timeline = TL.Class.extend({
 		this._timenav.on('zoomtoggle', this._onZoomToggle, this);
 
 		// StorySlider Events
-		this._storyslider.on('change', this._onSlideChange, this);
-		this._storyslider.on('colorchange', this._onColorChange, this);
-		this._storyslider.on('nav_next', this._onStorySliderNext, this);
-		this._storyslider.on('nav_previous', this._onStorySliderPrevious, this);
+		//this._storyslider.on('change', this._onSlideChange, this);
+		//this._storyslider.on('colorchange', this._onColorChange, this);
+		//this._storyslider.on('nav_next', this._onStorySliderNext, this);
+		//this._storyslider.on('nav_previous', this._onStorySliderPrevious, this);
 
 		// Menubar Events
 		this._menubar.on('zoom_in', this._onZoomIn, this);
@@ -12704,7 +12700,7 @@ TL.Timeline = TL.Class.extend({
 	_onTimeNavChange: function(e) {
 		if (this.current_id != e.unique_id) {
 			this.current_id = e.unique_id;
-			this._storyslider.goToId(this.current_id);
+			//this._storyslider.goToId(this.current_id);
 			this._onChange(e);
 		}
 	},
@@ -12717,7 +12713,7 @@ TL.Timeline = TL.Class.extend({
 	},
 
 	_onBackToStart: function(e) {
-		this._storyslider.goTo(0);
+		//this._storyslider.goTo(0);
 		this.fire("back_to_start", {unique_id:this.current_id}, this);
 	},
 
@@ -12750,21 +12746,21 @@ TL.Timeline = TL.Class.extend({
 		this._onLoaded();
 	},
 
-	_onStorySliderLoaded: function() {
-		this._loaded.storyslider = true;
-		this._onLoaded();
-	},
+	//_onStorySliderLoaded: function() {
+		////this._loaded.storyslider = true;
+		//this._onLoaded();
+	//},
 
-	_onStorySliderNext: function(e) {
-		this.fire("nav_next", e);
-	},
+	//_onStorySliderNext: function(e) {
+		//this.fire("nav_next", e);
+	//},
 
-	_onStorySliderPrevious: function(e) {
-		this.fire("nav_previous", e);
-	},
+	//_onStorySliderPrevious: function(e) {
+		//this.fire("nav_previous", e);
+	//},
 
 	_onLoaded: function() {
-		if (this._loaded.storyslider && this._loaded.timenav) {
+		if (/*this._loaded.storyslider && */this._loaded.timenav) {
 			this.fire("loaded", this.config);
 			// Go to proper slide
 			if (this.options.hash_bookmark && window.location.hash != "") {
