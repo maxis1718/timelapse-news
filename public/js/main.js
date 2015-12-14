@@ -59,8 +59,8 @@ function MapMonster(params) {
     };
 
     oMap.composeContent = function(eventObj) {
-        return '<div class="info-card"><h1>' + eventObj.title + 
-                   '</h1><div>' + eventObj.abstract + '</div></div>';
+        return '<div class="info-card"><div class="window_title"><h1>' + eventObj.title + 
+                   '</h1></div><div>' + eventObj.abstract + '</div></div>';
     };
 
     oMap.addEvent = function (eventObj) {
