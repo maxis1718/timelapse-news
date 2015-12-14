@@ -1,4 +1,4 @@
-<footer style="overflow:hidden;">
-    <div id="timeline-div" style="position:relative; bottom:0; width:100%;"></div>
+<footer>
+    <div id="timeline-div"></div>
     <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
 </footer>
