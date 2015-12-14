@@ -12,8 +12,9 @@
                 
                 var response = JSON.parse(data);
 
+                newsMap.removeAllEvents();
+
                 $.each(response.events, function(index, event) {
-                    console.log(event);
 
                     newsMap.addEvent({
                         id: index,
