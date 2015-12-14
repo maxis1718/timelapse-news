@@ -11,12 +11,10 @@
                 { 'detail': { e: [] } }
             ));
             
-            $.ajax({
-                url: '/mock/search/topic/' + queryTerm
-            }).success(function(data, status, xhr) {
-                var response = JSON.parse(data);
-                var topic = response.topic;
-                var events = response.events;
+            $.getJSON('/mock/search/topic/' + queryTerm)
+                .success(function(data, status, xhr) {
+                var topic = queryTerm;
+                var events = data;
                 // dispatch to timeline
                 document.dispatchEvent(new CustomEvent(
                     'initiate_events',

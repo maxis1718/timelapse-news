@@ -58,9 +58,7 @@ app.get('/mock/search/topic/:topic', function(req, res, next) {
 
     // mock data for backend
     // ...
-    var response = {
-        topic: req.params.topic,
-        events: [
+    var response = [
             {
                 "geo":{
                     "latitude":"47.162494",
@@ -146,8 +144,7 @@ app.get('/mock/search/topic/:topic', function(req, res, next) {
                     "toTimeStamp":"null"
                 }
             }
-        ]
-    };
+    ];
 
     return res.send(response);
 });
