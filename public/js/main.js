@@ -48,6 +48,9 @@ var newsMap = (function(){
             document.addEventListener('remove_event', function(e) {
                 mapObj.removeEvent(e.detail.id);
             });
+            document.addEventListener('leak_events', function(e) {
+                mapObj.peekAndSetView(e.detail.es);
+            });
         }
     });
 
@@ -67,8 +70,6 @@ var newsMap = (function(){
 
 function calculateOptimalView(markers) {
     var n = Object.keys(markers).length;
-    if (n == 0) return null;
-    //
     var INF = 100000;
     var minLng, maxLng, minLat, maxLat;
     minLng = minLat = INF;
@@ -80,6 +81,24 @@ function calculateOptimalView(markers) {
         minLat = Math.min(minLat, m.lat);
         maxLat = Math.max(maxLat, m.lat);
     }
+    return calculateOptimalViewBase(n, minLng, maxLng, minLat, maxLat);
+}
+function calculateOptimalViewFromEventArray(events) {
+    var n = events.length;
+    var INF = 100000;
+    var minLng, maxLng, minLat, maxLat;
+    minLng = minLat = INF;
+    maxLng = maxLat = -INF;
+    events.forEach(function(e) {
+        minLng = Math.min(minLng, e.geo.longtitude)
+        maxLng = Math.max(maxLng, e.geo.longtitude)
+        minLat = Math.min(minLat, e.geo.latitude)
+        maxLat = Math.max(maxLat, e.geo.latitude)
+    });
+    return calculateOptimalViewBase(n, minLng, maxLng, minLat, maxLat);
+}
+function calculateOptimalViewBase(n, minLng, maxLng, minLat, maxLat) {
+    if ( n == 0 ) return null;
     var lng0 = (minLng+maxLng)/2;
     var lat0 = (minLat+maxLat)/2;
     if ( n == 1 ) return {
@@ -101,7 +120,7 @@ function calculateOptimalView(markers) {
             lat: lat0
         },
         zoom: zoom,
-    }
+    };
 }
 
 function MapMonster(params) {
@@ -113,7 +132,7 @@ function MapMonster(params) {
     var markers = {};
 
     var prevInfoWindow = null;
-    var dynamicUpdate = true;
+    var dynamicUpdate = false;
 
     var cardTemplate = 
         '<div class="info-card">' +
@@ -215,6 +234,11 @@ function MapMonster(params) {
             markers[k].marker.setMap(null);
         }
         markers = {};
+    };
+
+    oMap.peekAndSetView = function (events) {
+        var cfg = calculateOptimalViewFromEventArray(events);
+        if(cfg) map.setOptions(cfg);
     };
 
     //private methods

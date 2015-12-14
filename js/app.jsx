@@ -9,7 +9,7 @@ ReactDOM.render(
 ); 
 
 document.addEventListener('initiate_events', function(e) {
-    var events = e.detail.e;
+    var events = e.detail.es;
     console.log(events, document.getElementById('timeline-div'));
     ReactDOM.render(
         <Timeline initEvents={events}/>,

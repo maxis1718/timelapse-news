@@ -20,7 +20,11 @@
                 // dispatch to timeline
                 document.dispatchEvent(new CustomEvent(
                     'initiate_events',
-                    { 'detail': { e: events } }
+                    { 'detail': { es: events } }
+                ));
+                document.dispatchEvent(new CustomEvent(
+                    'leak_events',
+                    { 'detail': { es: events}  }
                 ));
             });
         });
