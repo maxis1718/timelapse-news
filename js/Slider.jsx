@@ -10,10 +10,15 @@ var Slider = React.createClass({
         }
     },
 
+    itv: null,
+
     getDefaultProps: function() {
         return {
             initWidth: 0,
             initLeft: '0%',
+            driftRatio: 10,
+            dampRatio: 0.0001,
+            refreshInterval: 40,
             eQueue: []
         };
     },
@@ -114,6 +119,25 @@ var Slider = React.createClass({
     },
 
     render: function() {
+        var self = this;
+        function sliderDriftHandler(e) {
+            //console.log('?');
+            if (self.state.width<1) return;
+            var x = (e.pageX-self.refs.sliderRoot.clientLeft)/self.state.width;
+            //console.log(e,self.state.left,x);
+            // left should go from left -> x
+            if(self.itv) clearInterval(self.itv);
+            self.itv = setInterval(function() {
+                var ll = parseFloat(self.state.left);
+                var dt = 100*x-ll;
+                var step = dt*Math.abs(dt) / (self.props.driftRatio*1000/self.props.refreshInterval*Math.abs(dt)+self.props.dampRatio);
+                //console.log(self.state.left, ' ', step);
+                self.setState({
+                    left: String(ll+step)+'%'
+                });
+            }, self.props.refreshInterval);
+        };
+        //
         return <div ref="sliderRoot" className="slider" style={{
             position: 'absolute',
             left: 0,
@@ -142,6 +166,22 @@ var Slider = React.createClass({
                     border: 'none'
                 }}/>
             </span>
+            <div ref="leftPane" key="left-div" style={{
+                height: '100%',
+                float: 'left',
+                zIndex: 10,
+                width: this.state.left
+                //backgroundColor: '#ff0000',
+                //opacity: 0.2
+            }} onClick={sliderDriftHandler} />
+            <div ref="rightPane" key="right-div" style={{
+                height: '100%',
+                overflow: 'hidden',
+                margin: '0 auto',
+                zIndex: 10
+                //backgroundColor: '#aaff00',
+                //opacity: 0.2
+            }} onClick={sliderDriftHandler}  />
         </div>
     }
 
