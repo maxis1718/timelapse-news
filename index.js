@@ -9,6 +9,10 @@ app.get('/', function(req, res) {
 	res.redirect('/index.html');
 });
 
+app.get('/tt', function(req, res) {
+	res.redirect('/timelineTest.html');
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
