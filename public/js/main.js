@@ -125,9 +125,14 @@ function MapMonster(params) {
         var marker = new google.maps.Marker({
             position: latlng,
             map: map,
-            animation: google.maps.Animation.DROP,
+            animation: google.maps.Animation.BOUNCE,
             title: eventObj.newsContent.title
         });
+
+        // trigger click after bouncing for 400 ms
+        setTimeout(function() {
+            google.maps.event.trigger(marker, 'click');
+        }, 400);
 
         var infowindow = new google.maps.InfoWindow({
             content: oMap.composeContent(eventObj),
@@ -138,6 +143,7 @@ function MapMonster(params) {
             if (prevInfoWindow !== null) {
                 prevInfoWindow.close();
             }
+            oMap.stopBounce(marker);
             infowindow.open(map, marker);
             prevInfoWindow = infowindow;
         });
