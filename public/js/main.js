@@ -71,7 +71,7 @@ function MapMonster(params) {
     // private property
     var map = null;
 
-    var markers = [];
+    var markers = {};
 
     var prevInfoWindow = null;
 
@@ -148,31 +148,23 @@ function MapMonster(params) {
             prevInfoWindow = infowindow;
         });
 
-        markers.push({
-            id: eventObj.id,
+        markers[eventObj.id] = {
             title: eventObj.newsContent.title,
             abstract: eventObj.newsContent.abstract,
             marker: marker
-        });
+        };
     };
 
     oMap.removeEvent = function (eventId) {
-        for (i = 0; i < markers.length; ++i) {
-            if (markers[i].id === eventId) {
-                markers[i].marker.setMap(null);
-                markers.splice(i, 1);
-
-                return;
-            }
-        }
+        markers[eventId].marker.setMap(null);
+        markers[eventId] = undefined;
     };
 
     oMap.removeAllEvents = function () {
-        for (i = 0; i < markers.length; ++i) {
-            markers[i].marker.setMap(null);
+        for (k in markers) {
+            markers[k].marker.setMap(null);
         }
-
-        markers.splice(0, markers.length);
+        markers = {};
     };
 
     //private methods
