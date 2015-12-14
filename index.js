@@ -7,6 +7,7 @@ var app = express();
 
 // view engine setup
 app.engine('.tpl', exphbs({
+	defaultLayout: 'single',
 	extname: '.tpl'
 }));
 
@@ -17,7 +18,9 @@ app.set('view engine', '.tpl');
 
 // server route
 app.get('/', function(req, res, next) {
-	res.render('index');
+	res.render('index', {
+		title: 'Timelapse News'
+	});
 });
 
 app.get('/test', function(req, res) {
