@@ -47,7 +47,7 @@ var newsMap = (function(){
         },
         removeEvent: function(eventId) {
             mapObj.removeEvent(eventId);
-        }   
+        }
     }
 
 })();
@@ -138,7 +138,6 @@ function MapMonster(params) {
 
     };
 }
-
 
 // var timeline = new TL.Timeline('timeline', '../data/demo.json');
 
