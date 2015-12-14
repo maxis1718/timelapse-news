@@ -26,25 +26,27 @@ var newsMap = (function(){
 
                 // unique event id
                 id: 0,
-
                 // provided by search API
-                lat: 48.856614,
-                lng: 2.352222,
-                title: 'Terrorism Fears Fuel France’s National Front',
-                abstract: 'France’s anti-immigration National Front party is well positioned to benefit from the Paris terror attacks in regional elections.',
-                location: 'Paris',
-                date: '2015/12/14',
-
-                // optional
-                img: '20151213055533.jpg'
+                geo: {
+                    latitude: 48.856614,
+                    longtitude: 2.352222,
+                    location: 'Paris',
+                },
+                newsContent: {
+                    title: 'Terrorism Fears Fuel France’s National Front',
+                    abstract: 'France’s anti-immigration National Front party is well positioned to benefit from the Paris terror attacks in regional elections.'
+                },
+                time: {
+                    from: '2015-12-14',
+                }
             });
 
             // add event listeners
-            document.addEventListener('ADD_EVENT', function(e) {
-                mapObj.addEvent(e.detail.eventObj);
+            document.addEventListener('add_event', function(e) {
+                mapObj.addEvent(e.detail.e);
             });
-            document.addEventListener('REMOVE_EVENT', function(e) {
-                mapObj.addEvent(e.detail.eventObj);
+            document.addEventListener('remove_event', function(e) {
+                mapObj.removeEvent(e.detail.id);
             });
         }
     });
@@ -102,17 +104,23 @@ function MapMonster(params) {
     };
 
     oMap.composeContent = function(eventObj) {
-        return sprintf(cardTemplate, eventObj);
+        var cardPayload = {
+            title: eventObj.newsContent.title,
+            date: eventObj.time.from,
+            location: eventObj.geo.location,
+            abstract: eventObj.newsContent.abstract,
+        };
+        return sprintf(cardTemplate, cardPayload);
     };
 
     oMap.addEvent = function (eventObj) {
         console.log('receive:', eventObj);
-        var latlng = new google.maps.LatLng(eventObj.lat, eventObj.lng);
+        var latlng = new google.maps.LatLng(eventObj.geo.latitude, eventObj.geo.longtitude);
 
         var marker = new google.maps.Marker({
             position: latlng,
             map: map,
-            title: eventObj.title
+            title: eventObj.newsContent.title
         });
 
         var infowindow = new google.maps.InfoWindow({
@@ -131,8 +139,8 @@ function MapMonster(params) {
 
         markers.push({
             id: eventObj.id,
-            title: eventObj.title,
-            abstract: eventObj.abstract,
+            title: eventObj.newsContent.title,
+            abstract: eventObj.newsContent.abstract,
             marker: marker
         });
     };
