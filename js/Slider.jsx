@@ -16,8 +16,8 @@ var Slider = React.createClass({
         return {
             initWidth: 0,
             initLeft: '0%',
-            driftRatio: 10,
-            dampRatio: 0.0001,
+            driftRatio: 16,
+            dampRatio: 2,
             refreshInterval: 40,
             eQueue: []
         };
@@ -140,10 +140,11 @@ var Slider = React.createClass({
             //console.log(e,self.state.left,x);
             // left should go from left -> x
             if(self.itv) clearInterval(self.itv);
+            var dd = 100*x - parseFloat(self.state.left);
             self.itv = setInterval(function() {
                 var ll = parseFloat(self.state.left);
                 var dt = 100*x-ll;
-                var step = dt*Math.abs(dt) / (self.props.driftRatio*1000/self.props.refreshInterval*Math.abs(dt)+self.props.dampRatio);
+                var step = Math.min(dd/self.props.driftRatio*self.props.refreshInterval/1000, dt*Math.abs(dt)/(Math.abs(dt)+self.props.dampRatio))
                 //console.log(self.state.left, ' ', step);
                 self.setState({
                     left: String(ll+step)+'%'
