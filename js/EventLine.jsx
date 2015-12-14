@@ -6,7 +6,7 @@ var EventLine = React.createClass({
     getDefaultProps: function() {
         return {
             maxRows: 3,
-            height: 150,
+            height: 168,
             yEventDisplace: 5,
             minEventWidth: 50,
             tsLeft: 0,
@@ -48,7 +48,7 @@ var EventLine = React.createClass({
         var DEFAULT_SPAN = 3600; // 1 hour
         if (this.state.width < 1) return [];
         var res = [];
-        var minSpan = Math.min(events.map(function(x) { return x.toTS ? DEFAULT_SPAN : x.toTS - x.fromTS; }));
+        var minSpan = Math.min(...events.map(function(x) { return x.toTS ? DEFAULT_SPAN : x.toTS - x.fromTS; }));
         var self = this;
         events.forEach(function(e) {
             // entering event
@@ -60,6 +60,7 @@ var EventLine = React.createClass({
                 e: e
             });
             // exiting event
+            var xx = Math.max(e.toTS, e.fromTS+minSpan); // make it so event has minimum span
             res.push({
                 t: e.toTS ? e.toTS : e.fromTS + minSpan/2, // offshoot event has duration = half of minSpan
                 x: (e.toTS-self.props.tsLeft)/(self.props.tsRight-self.props.tsLeft),
@@ -98,6 +99,7 @@ var EventLine = React.createClass({
                 res.push({
                     r: r,
                     x: (e.fromTS-self.props.tsLeft) / span * self.state.width,
+                    w: (e.toTS-e.fromTS) / span * self.state.width,
                     text: e.text
                 });
                 es.push(e);
@@ -117,12 +119,12 @@ var EventLine = React.createClass({
         var self = this;
         var divs = [];
         if (this.state.width < 1) return [];
+        var rowHeight = (self.props.height-self.props.yEventDisplace) / rowNum;
+        var eventHeight = rowHeight - self.props.yEventDisplace;
         res.forEach(function(info, index) {
             var r = info.r;
             var x = info.x;
             var text = info.text;
-            var rowHeight = (self.props.height-self.props.yEventDisplace) / rowNum;
-            var eventHeight = rowHeight - self.props.yEventDisplace;
             // tl-timemarker-content-container-small
             // tl-timemarker-content-small
             divs.push(<div className="tl-timemarker" style={{ left: x, top: r*rowHeight+self.props.yEventDisplace }} key={'time-marker-'+index}>
@@ -132,10 +134,12 @@ var EventLine = React.createClass({
                     <div className="tl-timemarker-line-left" key="lline"></div>
                     <div className="tl-timemarker-line-right" key="rline"></div>
                 </div>
-                <div className="tl-timemarker-content-container" style={{ height: eventHeight }} key='content'>
+                <div className="tl-timemarker-content-container" style={{ height: eventHeight, width: info.w }} key='content'>
                     <div className="tl-timemarker-content">
                         <div className="tl-timemarker-text">
-                            <h2 className="tl-headline" style={{
+                            <h2 className="tl-headline lineClamp3" style={{
+                                fontSize: '11px',
+                                lineHeight: '11px'
                             }}>
                                 {text}
                             </h2>

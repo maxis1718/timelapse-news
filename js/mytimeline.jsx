@@ -13,24 +13,6 @@ function getEndTimeFromEvent(event) {
 
 var Timeline = React.createClass({
 
-    /* utility */
-
-    preprocessEvents: function(events) {
-        var res = _clone(events);
-        // adapt TS field if necessary
-        for (var i=0; i<res.length; i++) {
-            res[i].fromTS = getStartTimeFromEvent(res[i]);
-            res[i].toTS = getEndTimeFromEvent(res[i]);
-        }
-        // sort events by start time
-        res.sort(function(a,b) { return a.fromTS - b.fromTS; });
-        // generate unique id for events
-        res.forEach(function(e, index) {
-            e.id = index;
-        });
-        return res;
-    },
-
     /* lifecycle */
 
     getDefaultProps: function() {
@@ -53,7 +35,7 @@ var Timeline = React.createClass({
             tsLastEnd: null,
             tsFocus: null
         };
-        var rearPadding;
+        var rearPadding, minFixedSpan;
         //
         initState.events = this.preprocessEvents(this.props.initEvents);
         initState.tsFirstStart = Math.min(...initState.events.map(function(x) { return x.fromTS; }));
@@ -69,7 +51,27 @@ var Timeline = React.createClass({
         initState.tsRight = initState.tsLastEnd + rearPadding;
         initState.tsFocus = initState.tsLeft;
         //console.log(initState);
+        minFixedSpan = (initState.tsRight-initState.tsLeft)/12; // 8%
+        for (var i=0; i<initState.events.length; i++) {
+            initState.events[i].toTS = Math.max(initState.events[i].fromTS+minFixedSpan, initState.events[i].toTS);
+        }
         return initState;
+    },
+
+    preprocessEvents: function(events) {
+        var res = _clone(events);
+        // adapt TS field if necessary
+        for (var i=0; i<res.length; i++) {
+            res[i].fromTS = getStartTimeFromEvent(res[i]);
+            res[i].toTS = getEndTimeFromEvent(res[i]);
+        }
+        // sort events by start time
+        res.sort(function(a,b) { return a.fromTS - b.fromTS; });
+        // generate unique id for events
+        res.forEach(function(e, index) {
+            e.id = index;
+        });
+        return res;
     },
 
     render: function() {
