@@ -29,3 +29,46 @@ html, body {
 .info-card .abstract-wrap .abtract-text {
 
 }
+
+.navbar {
+    background-color: #006EA7;
+}
+
+.page_title {
+    display: inline-block;
+    margin: 0 15px 0 15px;
+    font-size: 1.5em;
+    color: white;
+    font-family: ProximaNova-Light, nova, arial, sans-serif
+}
+
+#search-form {
+    display: inline-block; 
+    height: 40px; 
+    width: 60%; 
+    margin: 0 auto;
+}
+
+.query_input {
+    width: 70%;
+    position: relative;
+    height: 30px;
+    margin: 5px 5px 0 5px;
+    font-size: 1.2em;
+    font-family: ProximaNova-Light, nova, arial, sans-serif;
+}
+
+.query_button {
+    width: 20%;
+    height: 30px;
+    border-radius: 3px;
+    background-color: white;
+    border: solid 1px #009E9E;
+    color: #006EA7;
+    font-size: 1.2em;
+}
+
+.query_button:hover, .query_button:focus {
+    background-color: #005EA7;
+    color: white;
+}
