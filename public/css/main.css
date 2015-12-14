@@ -1,0 +1,139 @@
+.d-ib {
+    display: inline-block;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* info-card */
+.info-card {
+    padding: 16px;
+    color: #343434;
+    font-weight: 300;
+}
+.info-card .image-wrap {
+
+}
+.info-card .content-wrap {
+
+}
+.info-card .content-wrap .title-wrap {
+    font-size: 1.5em;
+    color: #191919;
+    padding-bottom: 0.5em;
+    font-weight: 400;
+}
+.info-card .content-wrap .meta-wrap {
+    display: flex;
+    justify-content: space-between;
+    color: #626262;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #eaeaea;
+}
+.info-card .content-wrap .meta-wrap .location-text {
+    padding-left: 0.4em;
+}
+.info-card .content-wrap .meta-wrap .date-text {
+
+}
+.info-card .abstract-wrap {
+    line-height: 1.1rem;
+    padding-top: 1rem;
+}
+.info-card .abstract-wrap .abtract-text {
+    text-align: justify;
+}
+.info-card footer {
+
+}
+.info-card footer .event-trace-wrap {
+
+}
+
+.header-top {
+    position: relative;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0px -2px 7px 1px #283841;
+}
+
+.header-top .supertop {
+    background: #354852;
+    height: 1.4em;
+}
+
+.header-top .navbar {
+    background: #4d6a79;
+    height: 3em;
+    line-height: 3em;
+    color: white;
+    padding-left: 1.2em;
+    position: relative;
+}
+.header-top .navbar .nav-title {
+    padding-left: 1em;
+}
+.header-top .navbar .search-wrap {
+    position: absolute;
+    right: 1em;
+    top: 0.5em;
+    height: 32px;
+}
+
+.header-top .navbar .search-wrap .search-btn {
+    padding: 0.5em;
+    cursor: pointer;
+    float: right;
+}
+
+.header-top .navbar .search-wrap .search-form {
+    padding: 0.5em;
+    cursor: pointer;
+    float: right;
+}
+
+
+
+.page_title {
+    display: inline-block;
+    margin: 0 15px 0 15px;
+    font-size: 1.5em;
+    color: white;
+    font-family: ProximaNova-Light, nova, arial, sans-serif
+}
+
+#search-form {
+    display: inline-block; 
+    height: 40px; 
+    width: 60%; 
+    margin: 0 auto;
+}
+
+.query_input {
+    width: 70%;
+    position: relative;
+    height: 30px;
+    margin: 5px 5px 0 5px;
+    font-size: 1.2em;
+    font-family: ProximaNova-Light, nova, arial, sans-serif;
+}
+
+.query_button {
+    width: 20%;
+    height: 30px;
+    border-radius: 3px;
+    background-color: white;
+    border: solid 1px #009E9E;
+    color: #006EA7;
+    font-size: 1.2em;
+}
+
+.query_button:hover, .query_button:focus {
+    background-color: #005EA7;
+    color: white;
+}
