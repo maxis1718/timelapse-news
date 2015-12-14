@@ -7,3 +7,9 @@ function initMap() {
         zoom: 8
     });
 }
+
+var timeline = new TL.Timeline('timeline', '../data/demo.json');
+
+window.onresize = function(event) {
+    timeline.updateDisplay();
+};

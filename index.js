@@ -17,7 +17,7 @@ app.set('view engine', '.tpl');
 
 // server route
 app.get('/', function(req, res, next) {
-	res.render('map');
+	res.render('index');
 });
 
 app.get('/test', function(req, res) {
