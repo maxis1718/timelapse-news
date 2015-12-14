@@ -13,6 +13,8 @@
                 var response = JSON.parse(data);
 
                 $.each(response.events, function(index, event) {
+                    console.log(event);
+
                     newsMap.addEvent({
                         id: index,
                         lat: event.geo.latitude,

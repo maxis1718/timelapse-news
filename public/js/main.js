@@ -47,6 +47,9 @@ var newsMap = (function(){
         },
         removeEvent: function(eventId) {
             mapObj.removeEvent(eventId);
+        },
+        removeAllEvents: function() {
+            mapObj.removeAllEvents();
         }
     }
 
@@ -129,8 +132,19 @@ function MapMonster(params) {
         for (i = 0; i < markers.length; ++i) {
             if (markers[i].id === eventId) {
                 markers[i].marker.setMap(null);
+                markers.splice(i, 1);
+
+                return;
             }
         }
+    };
+
+    oMap.removeAllEvents = function () {
+        for (i = 0; i < markers.length; ++i) {
+            markers[i].marker.setMap(null);
+        }
+
+        markers.splice(0, markers.length);
     };
 
     //private methods
