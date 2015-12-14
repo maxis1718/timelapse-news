@@ -8,7 +8,7 @@
                 <i class="fa fa-search"></i>
             </div>
             <div class="search-form">
-                <input name="q" type="text" placeholder="#topic"/>
+                <input id="search-input" name="q" type="text" placeholder="#topic"/>
             </div>
             <!-- <form id="search-form" method="get" action="https://www.google.com/search">
                 <div id="searchbox">
