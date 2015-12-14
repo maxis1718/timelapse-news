@@ -68,12 +68,172 @@
             "media": {
                 "caption":      "TW/JP Joint Hackday",
                 "credit":       "Don't know what's this",
-                "url":          "http://i.imgur.com/3TtTwrU.jpg",
+                "url":          "https://www.google.com.tw/maps/place/Taipei+101,+No.+7,+Section+5,+Xinyi+Rd,+Xinyi+District,+Taipei+City,+110/@25.0339079,121.5623212,17z/data=!3m1!4b1!4m2!3m1!1s0x3442abb6da9c9e1f:0x1206bcf082fd10a6?hl=en",
                 "thumbnail":    "http://i.imgur.com/3TtTwrU.jpg"
             },
             "text": {
                 "headline": "TW/JP Joint Hackday",
                 "text":     "Timelapse News will be demostrated tomorrow"
+            }
+        },
+        {
+            "start_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "14",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "end_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "15",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "media": {
+                "caption":      "Meet up with team members",
+                "credit":       "Will you join the event?",
+                "url":          "http://img1.meetupstatic.com/maps/1.0.0/world/1/0/0.png",
+                "thumbnail":    "http://i.imgur.com/3TtTwrU.jpg"
+            },
+            "text": {
+                "headline": "A event happens at the same time as TW/JP Hackday",
+                "text":     "Meet up with team members"
+            }
+        },
+        {
+            "start_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "14",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "end_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "15",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "media": {
+                "caption":      "Meet up with team members 2",
+                "credit":       "Will you join the event?",
+                "url":          "http://img1.meetupstatic.com/maps/1.0.0/world/1/0/0.png",
+                "thumbnail":    "http://i.imgur.com/3TtTwrU.jpg"
+            },
+            "text": {
+                "headline": "A event happens at the same time as TW/JP Hackday 2",
+                "text":     "Meet up with team members"
+            }
+        },
+        {
+            "start_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "14",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "end_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "15",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "media": {
+                "caption":      "Meet up with team members 3",
+                "credit":       "Will you join the event?",
+                "url":          "http://img1.meetupstatic.com/maps/1.0.0/world/1/0/0.png",
+                "thumbnail":    "http://i.imgur.com/3TtTwrU.jpg"
+            },
+            "text": {
+                "headline": "Another event happens at the same time as TW/JP Hackday 3",
+                "text":     "Meet up with team members"
+            }
+        },
+        {
+            "start_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "14",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "end_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "15",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "media": {
+                "caption":      "Meet up with team members 4",
+                "credit":       "Will you join the event?",
+                "url":          "http://img1.meetupstatic.com/maps/1.0.0/world/1/0/0.png",
+                "thumbnail":    "http://i.imgur.com/3TtTwrU.jpg"
+            },
+            "text": {
+                "headline": "The first duplicated event",
+                "text":     "Meet up with team members"
+            }
+        },
+        {
+            "start_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "14",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "end_date": {
+                "year":         "2015",
+                "month":        "12",
+                "day":          "15",
+                "hour":         "10",
+                "minute":       "30",
+                "second":       "",
+                "millisecond":  "",
+                "format":       ""
+            },
+            "media": {
+                "caption":      "Meet up with team members 5",
+                "credit":       "Will you join the event?",
+                "url":          "http://img1.meetupstatic.com/maps/1.0.0/world/1/0/0.png",
+                "thumbnail":    "http://i.imgur.com/3TtTwrU.jpg"
+            },
+            "text": {
+                "headline": "Another duplicated Event",
+                "text":     "Meet up with team members"
             }
         }
     ]
