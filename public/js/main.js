@@ -8,10 +8,10 @@
             mountPoint: document.querySelector(mapContainerId) || 0,
             options: {
                 center: {
-                    lat: -34.397,
-                    lng: 150.644
+                    lat: 48.856614,
+                    lng: 2.352222
                 },
-                zoom: 8,
+                zoom: 4,
                 zoomControl: false,
                 streetViewControl: false,
                 mapTypeControl: false
@@ -22,8 +22,12 @@
             mapObj.init();
 
             mapObj.addEvent({
-                lat: -34.397,
-                lng: 150.644
+                lat: 48.856614,
+                lng: 2.352222,
+                contentString: '<div class="info-card">' +
+                    '<h1>Terrorism Fears Fuel France’s National Front </h1>' +
+                    '<div>France’s anti-immigration National Front party is well positioned to benefit from the Paris terror attacks in regional elections.</div>' +
+                    '</div>'
             });
         }
     });
@@ -47,8 +51,11 @@ function MapMonster(params) {
             map:map,
             title:"You are here!"
         });
+        var infowindow = new google.maps.InfoWindow({
+            content: eventObj.contentString
+        });
         google.maps.event.addListener(marker,'click',function(){
-            console.log('kerker');
+            infowindow.open(map, marker);
         });
     };
 
