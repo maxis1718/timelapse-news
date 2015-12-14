@@ -44,13 +44,45 @@ var EventLine = React.createClass({
         this.updateWidth();
     },
 
+    generateEventQueue: function(events) {
+        var DEFAULT_SPAN = 3600; // 1 hour
+        if (this.state.width < 1) return [];
+        var res = [];
+        var minSpan = Math.min(events.map(function(x) { return x.toTS ? DEFAULT_SPAN : x.toTS - x.fromTS; }));
+        var self = this;
+        events.forEach(function(e) {
+            // entering event
+            res.push({
+                t: e.fromTS,
+                x: (e.fromTS-self.props.tsLeft)/(self.props.tsRight-self.props.tsLeft),
+                id: e.id,
+                type: Slider.QEVENT.IN,
+                e: e
+            });
+            // exiting event
+            res.push({
+                t: e.toTS ? e.toTS : e.fromTS + minSpan/2, // offshoot event has duration = half of minSpan
+                x: (e.toTS-self.props.tsLeft)/(self.props.tsRight-self.props.tsLeft),
+                id: e.id,
+                type: Slider.QEVENT.OUT,
+                e: e
+            });
+        });
+        res.sort(function(a,b) {
+            if (a.t != b.t) return a.t - b.t;
+            return a.type - b.type;
+        });
+        return res;
+    },
+
     calculateRenderedEvent: function() {
         var rowNum = 0;
         var rowPointer = [];
         var res = [];
+        var es = [];
         var span = this.props.tsRight - this.props.tsLeft;
         var self = this;
-        if (this.state.width < 1) return [];
+        if (this.state.width < 1) return {};
         this.props.events.forEach(function(e, index) {
             var r;
             for (r=0; r<rowNum; r++) {
@@ -68,10 +100,23 @@ var EventLine = React.createClass({
                     x: (e.fromTS-self.props.tsLeft) / span * self.state.width,
                     text: e.text
                 });
+                es.push(e);
             }
         });
-        // use rowNum, res to generate divs to be rendered
+        return {
+            rowNum: rowNum,
+            res: res,
+            events: es
+        };
+    },
+
+    // use rowNum, res to generate divs to be rendered
+    calculateRenderedDiv: function(info) {
+        var rowNum = info.rowNum;
+        var res = info.res;
+        var self = this;
         var divs = [];
+        if (this.state.width < 1) return [];
         res.forEach(function(info, index) {
             var r = info.r;
             var x = info.x;
@@ -99,19 +144,19 @@ var EventLine = React.createClass({
                 </div>
             </div>)
         });
-        //console.log(this.props.events);
-        //console.log(divs);
         return divs;
     },
 
     render: function() {
-        var divs = this.calculateRenderedEvent();
+        var info = this.calculateRenderedEvent();
+        var divs = this.calculateRenderedDiv(info);
+        var eventQueue = this.generateEventQueue(info.events);
         return <div ref="rootContainer" id="event-line" style={{
             height: this.props.height,
             backgroundColor: '#4d6a79',
             overflow: 'hidden'
         }}>
-            <Slider initWidth={this.state.width} />
+            <Slider initWidth={this.state.width} eQueue={eventQueue} />
             {divs}
         </div>;
     }
