@@ -38,6 +38,14 @@ var newsMap = (function(){
                 // optional
                 img: '20151213055533.jpg'
             });
+
+            // add event listeners
+            document.addEventListener('ADD_EVENT', function(e) {
+                mapObj.addEvent(e.detail.eventObj);
+            });
+            document.addEventListener('REMOVE_EVENT', function(e) {
+                mapObj.addEvent(e.detail.eventObj);
+            });
         }
     });
 
@@ -98,6 +106,7 @@ function MapMonster(params) {
     };
 
     oMap.addEvent = function (eventObj) {
+        console.log('receive:', eventObj);
         var latlng = new google.maps.LatLng(eventObj.lat, eventObj.lng);
 
         var marker = new google.maps.Marker({

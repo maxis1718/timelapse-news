@@ -2,11 +2,11 @@
     {{> head }}
     <body>
         <div class="body-holder">
-            <div class="wrap">
+            <div id="wrapper">
                 {{> header }}
-                <div class="container">
+                <div id="container">
                     <div class="row">
-                        <div class="col-md-12 text-center">
+                        <div class="col-md-12">
                             {{{ body }}}
                         </div>
                     </div>

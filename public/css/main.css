@@ -3,55 +3,34 @@
 }
 
 html, body {
-    height: 100%;
+    min-height: 100%;
+    overflow: hidden;
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
 }
 
-/* info-card */
-.info-card {
-    padding: 16px;
-    color: #343434;
-    font-weight: 300;
+/* had to take the margin off the p as in some browsers this can add extra margin to #content div*/
+p {
+    margin:0;
+    padding:0 0 1em 0;
 }
-.info-card .image-wrap {
 
+#wrapper {
+    padding: 64px 0 200px 0;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
 }
-.info-card .content-wrap {
+#container {
+    min-height: 100%;
+}
 
-}
-.info-card .content-wrap .title-wrap {
-    font-size: 1.5em;
-    color: #191919;
-    padding-bottom: 0.5em;
-    font-weight: 400;
-}
-.info-card .content-wrap .meta-wrap {
-    display: flex;
-    justify-content: space-between;
-    color: #626262;
-    padding-bottom: 1em;
-    border-bottom: 1px solid #eaeaea;
-}
-.info-card .content-wrap .meta-wrap .location-text {
-    padding-left: 0.4em;
-}
-.info-card .content-wrap .meta-wrap .date-text {
-
-}
-.info-card .abstract-wrap {
-    line-height: 1.1rem;
-    padding-top: 1rem;
-}
-.info-card .abstract-wrap .abtract-text {
-    text-align: justify;
-}
-.info-card footer {
-
-}
-.info-card footer .event-trace-wrap {
-
+.header-top {
+    margin-top: -64px;
+    height: 72px;
 }
 
 .header-top {
@@ -64,13 +43,13 @@ html, body {
 
 .header-top .supertop {
     background: #354852;
-    height: 1.4em;
+    height: 24px;
 }
 
 .header-top .navbar {
     background: #4d6a79;
-    height: 3em;
-    line-height: 3em;
+    height: 48px;
+    line-height: 48px;
     color: white;
     padding-left: 1.2em;
     position: relative;
@@ -97,6 +76,21 @@ html, body {
     float: right;
 }
 
+footer {
+    margin-bottom: -200px;
+    height: 200px;
+    position: relative;
+}
+
+/* Timeline */
+#timeline-div {
+    position:relative;
+    bottom:0;
+    width:100%;
+}
+#event-line {
+
+}
 
 
 .page_title {
