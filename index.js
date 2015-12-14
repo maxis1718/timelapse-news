@@ -49,8 +49,8 @@ app.get('/api/search/topic/:topic', function(req, res, next) {
             },
             {
                 "geo":{
-                    "latitude":"47.162494",
-                    "longtitude":"19.503304",
+                    "latitude":"48.162494",
+                    "longtitude":"19.703304",
                     "location":"Hungary"
                 },
                 "newsContent":{
@@ -66,9 +66,9 @@ app.get('/api/search/topic/:topic', function(req, res, next) {
             },
             {
                 "geo":{
-                    "latitude":"null",
-                    "longtitude":"null",
-                    "location":"null"
+                    "latitude":"46.17",
+                    "longtitude":"19.85",
+                    "location":"Hungary"
                 },
                 "newsContent":{
                     "abstract":"UNKOWN",
@@ -83,9 +83,9 @@ app.get('/api/search/topic/:topic', function(req, res, next) {
             },
             {
                 "geo":{
-                    "latitude":"null",
-                    "longtitude":"null",
-                    "location":"null"
+                    "latitude":"44.17",
+                    "longtitude":"19.99",
+                    "location":"Hungary"
                 },
                 "newsContent":{
                     "abstract":"UNKOWN",
