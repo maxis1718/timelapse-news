@@ -65,6 +65,45 @@ var newsMap = (function(){
 
 })();
 
+function calculateOptimalView(markers) {
+    var n = Object.keys(markers).length;
+    if (n == 0) return null;
+    //
+    var INF = 100000;
+    var minLng, maxLng, minLat, maxLat;
+    minLng = minLat = INF;
+    maxLng = maxLat = -INF;
+    for (k in markers) {
+        var m = markers[k];
+        minLng = Math.min(minLng, m.lng);
+        maxLng = Math.max(maxLng, m.lng);
+        minLat = Math.min(minLat, m.lat);
+        maxLat = Math.max(maxLat, m.lat);
+    }
+    var lng0 = (minLng+maxLng)/2;
+    var lat0 = (minLat+maxLat)/2;
+    if ( n == 1 ) return {
+        center: {
+            lng: lng0,
+            lat: lat0
+        },
+        zoom: 4
+    };
+    var lngSpan = (maxLng-lng0)+(maxLng-minLng)/(Math.log2(n)+1);
+    var latSpan = (maxLat-lat0)+(maxLat-minLat)/(Math.log2(n)+1);
+    var lngRatio = 360/lngSpan;
+    var latRatio = 180/latSpan;
+    var ratio = Math.min(lngRatio, latRatio);
+    var zoom = Math.floor(Math.log2(ratio));
+    return {
+        center: {
+            lng: lng0,
+            lat: lat0
+        },
+        zoom: zoom,
+    }
+}
+
 function MapMonster(params) {
     var oMap = this;
 
@@ -74,6 +113,7 @@ function MapMonster(params) {
     var markers = {};
 
     var prevInfoWindow = null;
+    var dynamicUpdate = true;
 
     var cardTemplate = 
         '<div class="info-card">' +
@@ -98,6 +138,12 @@ function MapMonster(params) {
         '</div>';
 
     //public methods
+    function updateView() {
+        if(!dynamicUpdate) return;
+        var cfg = calculateOptimalView(markers);
+        if(cfg) map.setOptions(cfg);
+    }
+
     oMap.init = function() {
         map = new google.maps.Map(params.mountPoint, params.options);
     };
@@ -119,7 +165,7 @@ function MapMonster(params) {
     };
 
     oMap.addEvent = function (eventObj) {
-        console.log('receive:', eventObj);
+        //console.log('receive:', eventObj);
         var latlng = new google.maps.LatLng(eventObj.geo.latitude, eventObj.geo.longtitude);
 
         var marker = new google.maps.Marker({
@@ -151,13 +197,17 @@ function MapMonster(params) {
         markers[eventObj.id] = {
             title: eventObj.newsContent.title,
             abstract: eventObj.newsContent.abstract,
+            lat: eventObj.geo.latitude,
+            lng: eventObj.geo.longtitude,
             marker: marker
         };
+        updateView();
     };
 
     oMap.removeEvent = function (eventId) {
         markers[eventId].marker.setMap(null);
-        markers[eventId] = undefined;
+        delete markers[eventId];
+        updateView();
     };
 
     oMap.removeAllEvents = function () {
