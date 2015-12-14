@@ -153,7 +153,7 @@ var TimeAxis = React.createClass({
         var inner = this.renderAxisFromScale(scales);
         return <div ref="rootContainer" id="time-axis" className="tl-timeaxis" style={{
             height: this.props.height,
-            backgroundColor: '#d0d0d0',
+            backgroundColor: '#354852',
             overflow: 'hidden'
         }}>
             <div className="tl-timeaxis-content-container">

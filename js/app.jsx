@@ -5,5 +5,5 @@ var mockEvents = require('../mock/events.js')
 
 ReactDOM.render(
     <Timeline initEvents={mockEvents} />, 
-    document.getElementById('timeline')
+    document.getElementById('timeline-div')
 ); 

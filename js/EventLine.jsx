@@ -107,7 +107,7 @@ var EventLine = React.createClass({
         var divs = this.calculateRenderedEvent();
         return <div ref="rootContainer" id="event-line" style={{
             height: this.props.height,
-            backgroundColor: '#eeeeee',
+            backgroundColor: '#4d6a79',
             overflow: 'hidden'
         }}>
             {divs}

@@ -111,8 +111,8 @@ var Timeline = React.createClass({
         return <div id="timeline" style={{
             display: 'block',
             width: '100%',
-            position: 'absolute',
-            bottom: '0',
+            //position: 'absolute',
+            //bottom: '0',
             overflow: 'hidden'
         }}>
             <div style={{ display: 'block' }}>
