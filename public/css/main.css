@@ -1,3 +1,7 @@
+.d-ib {
+    display: inline-block;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -28,7 +32,7 @@ html, body {
     justify-content: space-between;
     color: #626262;
     padding-bottom: 1em;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eaeaea;
 }
 .info-card .content-wrap .meta-wrap .location-text {
     padding-left: 0.4em;
@@ -38,15 +42,62 @@ html, body {
 }
 .info-card .abstract-wrap {
     line-height: 1.1rem;
-    padding-top: 1em;
+    padding-top: 1rem;
 }
 .info-card .abstract-wrap .abtract-text {
     text-align: justify;
 }
+.info-card footer {
 
-.navbar {
-    background-color: #006EA7;
 }
+.info-card footer .event-trace-wrap {
+
+}
+
+.header-top {
+    position: relative;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0px -2px 7px 1px #283841;
+}
+
+.header-top .supertop {
+    background: #354852;
+    height: 1.4em;
+}
+
+.header-top .navbar {
+    background: #4d6a79;
+    height: 3em;
+    line-height: 3em;
+    color: white;
+    padding-left: 1.2em;
+    position: relative;
+}
+.header-top .navbar .nav-title {
+    padding-left: 1em;
+}
+.header-top .navbar .search-wrap {
+    position: absolute;
+    right: 1em;
+    top: 0.5em;
+    height: 32px;
+}
+
+.header-top .navbar .search-wrap .search-btn {
+    padding: 0.5em;
+    cursor: pointer;
+    float: right;
+}
+
+.header-top .navbar .search-wrap .search-form {
+    padding: 0.5em;
+    cursor: pointer;
+    float: right;
+}
+
+
 
 .page_title {
     display: inline-block;

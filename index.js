@@ -26,7 +26,6 @@ app.get('/', function(req, res, next) {
 app.get('/api/search/topic/:topic', function(req, res, next) {
     // mock data for backend
     // ...
-
     var response = {
         topic: req.params.topic,
         events: [
