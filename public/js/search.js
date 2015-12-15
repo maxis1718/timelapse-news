@@ -19,13 +19,19 @@
                 { 'detail': { e: [] } }
             ));
             
-            //$.getJSON('/mock/search/topic/' + queryTerm)
-            $.getJSON('/api/search/topic/' + queryTerm)
+            $.getJSON('/mock/search/topic/' + queryTerm)
+            //$.getJSON('/api/search/topic/' + queryTerm)
                 .success(function(data, status, xhr) {
 
                 iconSets.toggleClass('d-n');
                 var topic = queryTerm;
-                var events = data;
+                var events = [];
+                // kill events without lat/lon
+                data.forEach(function(d) {
+                    if (d && d.geo && d.geo.latitude && d.geo.longtitude) {
+                        events.push(d);
+                    }
+                });
                 // safety catch...
                 var LIM = 100;
                 events = shuffle(events).slice(0, LIM);
