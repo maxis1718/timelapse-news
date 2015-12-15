@@ -9,7 +9,7 @@
                 <i class="fa fa-circle-o-notch fa-spin d-n"></i>
             </div>
             <div class="search-form">
-                <input id="search-input" name="q" type="text" placeholder="#topic" value="paris attack"/>
+                <input id="search-input" name="q" type="text" placeholder="#topic" value="terrorist attack"/>
             </div>
             <!-- <form id="search-form" method="get" action="https://www.google.com/search">
                 <div id="searchbox">
