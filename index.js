@@ -37,19 +37,19 @@ app.get('/api/search/topic/:topic', function(req, res, next) {
             console.log('read err:',err);
             // try to get result from jar
             var cmd = "java -jar Timelapse.jar '"+ req.params.topic +"'";
-            exec(cmd, function(error, stdout, stderr) {
+            exec(cmd, {maxBuffer: 1024*100000}, function(error, stdout, stderr) {
                 console.log('get data from jar, save to cache');
                 // get result, write to cache
                 fs.writeFile(cachedFile, stdout, function(err){
                     if (err) {
                         console.log('write err:', err);
                     }
-                    return res.send(stdout);
+                    return res.send(JSON.stringify(JSON.parse(stdout)));
                 });
             });
         } else {
             console.log('got data from cache');
-            return res.send(JSON.parse(data));
+            return res.send(JSON.stringify(JSON.parse(data)));
         }
     });
 });
