@@ -183,9 +183,17 @@ function MapMonster(params) {
         }
     };
 
+    oMap.setCenter = function (latitude, longitude) {
+        var latlon = new google.maps.LatLng(latitude, longitude);
+        map.panTo(latlon);
+        map.setCenter(latlon);
+    };
+
     oMap.addEvent = function (eventObj) {
         //console.log('receive:', eventObj);
         var latlng = new google.maps.LatLng(eventObj.geo.latitude, eventObj.geo.longtitude);
+
+        oMap.setCenter(eventObj.geo.latitude, eventObj.geo.longtitude);
 
         var marker = new google.maps.Marker({
             position: latlng,
@@ -194,10 +202,10 @@ function MapMonster(params) {
             title: eventObj.newsContent.title
         });
 
-        // trigger click after bouncing for 400 ms
+        // trigger click after bouncing for 800 ms
         setTimeout(function() {
             google.maps.event.trigger(marker, 'click');
-        }, 400);
+        }, 800);
 
         var infowindow = new google.maps.InfoWindow({
             content: oMap.composeContent(eventObj),

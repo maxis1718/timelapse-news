@@ -5,10 +5,10 @@ var EventLine = React.createClass({
 
     getDefaultProps: function() {
         return {
-            maxRows: 3,
-            height: 168,
+            maxRows: 2,
+            height: 128,
             yEventDisplace: 5,
-            minEventWidth: 50,
+            minEventWidth: 64,
             tsLeft: 0,
             tsRight: 0,
             events: []

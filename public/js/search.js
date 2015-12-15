@@ -8,6 +8,9 @@
     $(document).ready(function() {
         
         $('.search-btn').click(function(e) {
+
+            var iconSets = $(this).find('i');
+            iconSets.toggleClass('d-n');
             
             var queryTerm = $('#search-input').val();
             newsMap.removeAllEvents();
@@ -19,6 +22,8 @@
             //$.getJSON('/mock/search/topic/' + queryTerm)
             $.getJSON('/api/search/topic/' + queryTerm)
                 .success(function(data, status, xhr) {
+
+                iconSets.toggleClass('d-n');
                 var topic = queryTerm;
                 var events = data;
                 // safety catch...
