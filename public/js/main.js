@@ -213,10 +213,10 @@ function MapMonster(params) {
             title: eventObj.newsContent.title
         });
 
-        // trigger click after bouncing for 800 ms
+        // trigger click after bouncing for 400 ms
         setTimeout(function() {
             google.maps.event.trigger(marker, 'click');
-        }, 800);
+        }, 400);
 
         var infowindow = new google.maps.InfoWindow({
             content: oMap.composeContent(eventObj),
