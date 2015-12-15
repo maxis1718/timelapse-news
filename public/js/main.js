@@ -191,6 +191,8 @@ function MapMonster(params) {
 
     oMap.addEvent = function (eventObj) {
         //console.log('receive:', eventObj);
+        eventObj.geo.latitude = parseFloat(eventObj.geo.latitude);
+        eventObj.geo.longtitude = parseFloat(eventObj.geo.longtitude);
         var latlng = new google.maps.LatLng(eventObj.geo.latitude, eventObj.geo.longtitude);
 
         oMap.setCenter(eventObj.geo.latitude, eventObj.geo.longtitude);
