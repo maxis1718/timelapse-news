@@ -105,6 +105,7 @@ footer {
     outline: none;
     color: #eee;
     margin-top: 5px;
+    padding-left: 8px;
 }
 #search-input.active {
 
