@@ -27,7 +27,7 @@
                 var topic = queryTerm;
                 var events = data;
                 // safety catch...
-                var LIM = 1000;
+                var LIM = 100;
                 events = shuffle(events).slice(0, LIM);
                 // dispatch to timeline
                 document.dispatchEvent(new CustomEvent(
