@@ -113,7 +113,8 @@ function calculateOptimalViewBase(n, minLng, maxLng, minLat, maxLat) {
     var lngRatio = Math.max(360/lngSpan, 1);
     var latRatio = Math.max(180/latSpan, 1);
     var ratio = Math.min(lngRatio, latRatio);
-    var zoom = Math.floor(Math.log2(ratio));
+    var zoom = Math.ceil(Math.log2(ratio));
+    zoom = Math.max(zoom, 2);
     console.log(minLng, maxLng, minLat, maxLat);
     console.log(lngSpan, latSpan, ratio, zoom);
     return {
