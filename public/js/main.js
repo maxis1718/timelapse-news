@@ -142,7 +142,7 @@ function MapMonster(params) {
             '<header class="image-wrap">' +
             '</header>' +
             '<section class="content-wrap">' +
-                '<div class="title-wrap">%(title)s</div>' +
+                '<div class="title-wrap"><a href="%(href)s" target="blank">%(title)s</a></div>' +
                 '<div class="meta-wrap">' +
                     '<div class="date-text">%(date)s</div>' +
                     '<div class="location-wrap">'+
@@ -174,11 +174,13 @@ function MapMonster(params) {
         if (eventObj.newsContent.abstract.indexOf('UNKOWN') > -1){
             eventObj.newsContent.abstract = '';
         }
+
         var cardPayload = {
             title: eventObj.newsContent.title,
             date: eventObj.time.from,
             location: eventObj.geo.location,
             abstract: eventObj.newsContent.abstract,
+            href: eventObj.newsContent.url
         };
         return sprintf(cardTemplate, cardPayload);
     };
