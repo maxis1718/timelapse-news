@@ -20,3 +20,6 @@ npm start
 
 <img width="373" alt="mobile" src="https://cloud.githubusercontent.com/assets/1659204/11800800/c8cd54e8-a31a-11e5-9582-1f5c8d670912.png">
 
+## Slides
+
+[Prezi](http://prezi.com/pcrfvfpzlfku/?utm_campaign=share&utm_medium=copy&rc=ex0share)
