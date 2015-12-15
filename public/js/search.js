@@ -19,7 +19,7 @@
                 { 'detail': { e: [] } }
             ));
             
-            $.getJSON('/mock/search/topic/' + queryTerm)
+            $.getJSON('/api/search/topic/' + queryTerm)
             //$.getJSON('/api/search/topic/' + queryTerm)
                 .success(function(data, status, xhr) {
 
