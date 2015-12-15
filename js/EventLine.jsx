@@ -24,7 +24,7 @@ var EventLine = React.createClass({
     },
 
     updateWidth: function() {
-        console.log('eventLine updateWidth');
+        //console.log('eventLine updateWidth');
         var rootContainer = this.refs.rootContainer || {};
         var rootContainerWidth = rootContainer.clientWidth;
         // debug('updateWidth(), rootContainer width:', rootContainerWidth);
@@ -164,7 +164,7 @@ var EventLine = React.createClass({
     },
 
     render: function() {
-        console.log('eventLine rerender', this.props.events);
+        //console.log('eventLine rerender', this.props.events);
         var info = this.calculateRenderedEvent();
         var divs = this.calculateRenderedDiv(info);
         var eventQueue = this.generateEventQueue(info.events);
