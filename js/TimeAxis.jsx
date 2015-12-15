@@ -33,11 +33,13 @@ var TimeAxis = React.createClass({
         FORMAT_STRING: ['mm', 'HH', 'DD', 'MMM', 'YYYY']
     },
 
+    bestTimeString: '',
+
     getDefaultProps: function() {
         return {
             height: 50,
             initWidth: 0,
-            minScaleWidth: 10, // min pixel/#scale
+            minScaleWidth: 50, // min pixel/#scale
             tsLeft: null,
             tsRight: null
         };
@@ -46,7 +48,6 @@ var TimeAxis = React.createClass({
     getInitialState: function() {
         var initState = {
             width: this.props.initWidth,
-            timestring: ''
         };
         return initState;
     },
@@ -83,17 +84,14 @@ var TimeAxis = React.createClass({
     },
 
     updateWidth: function() {
+        console.log('timeAxis updateWidth');
         var rootContainer = this.refs.rootContainer || {};
         var rootContainerWidth = rootContainer.clientWidth;
         // debug('updateWidth(), rootContainer width:', rootContainerWidth);
-        if (!isNaN(rootContainerWidth)) {
-            var span = this.props.tsRight - this.props.tsLeft;
-            var minTime = this.props.minScaleWidth / rootContainerWidth * span;
-            var bestTimestring = this.getBestTimestring(minTime);
-            if (this.state.width!=rootContainerWidth || this.state.timestring!=bestTimestring) {
+        if (!isNaN(rootContainerWidth) && rootContainerWidth>1) {
+            if (this.state.width!=rootContainerWidth) {
                 this.setState({
-                    width: rootContainerWidth,
-                    timestring: bestTimestring
+                    width: rootContainerWidth
                 });
             }
         }
@@ -115,8 +113,8 @@ var TimeAxis = React.createClass({
         // return empty array if width is too small.
         if (this.state.width < 1) return scales;
         // calculate scales..
-        var tsFirst = getTrailingTimestamp(this.props.tsLeft, this.state.timestring);
-        for (var ts=tsFirst; ts<=this.props.tsRight; ts=getNextTimestamp(ts, this.state.timestring)) {
+        var tsFirst = getTrailingTimestamp(this.props.tsLeft, this.bestTimeString);
+        for (var ts=tsFirst; ts<=this.props.tsRight; ts=getNextTimestamp(ts, this.bestTimeString)) {
             scales.push(ts);
         }
         //console.log(scales);
@@ -128,7 +126,7 @@ var TimeAxis = React.createClass({
         var major = [];
         var span = this.props.tsRight - this.props.tsLeft;
         var self = this;
-        var baseIndex = this.timestringToIndex(this.state.timestring);
+        var baseIndex = this.timestringToIndex(this.bestTimeString);
         if (this.state.width < 1) return { minor: minor, major: major };
         scales.forEach(function(ts, index) {
             var offset = (ts-self.props.tsLeft) / span * self.state.width;
@@ -157,6 +155,11 @@ var TimeAxis = React.createClass({
 
     render: function() {
         console.log('timeAxis rerender ', this.props.tsLeft, this.props.tsRight);
+        //
+        var span = this.props.tsRight - this.props.tsLeft;
+        var minTime = this.props.minScaleWidth / this.state.width * span;
+        this.bestTimeString = this.getBestTimestring(minTime);
+        //
         var scales = this.calculateScales();
         var inner = this.renderAxisFromScale(scales);
         return <div ref="rootContainer" id="time-axis" className="tl-timeaxis" style={{

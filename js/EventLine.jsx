@@ -24,6 +24,7 @@ var EventLine = React.createClass({
     },
 
     updateWidth: function() {
+        console.log('eventLine updateWidth');
         var rootContainer = this.refs.rootContainer || {};
         var rootContainerWidth = rootContainer.clientWidth;
         // debug('updateWidth(), rootContainer width:', rootContainerWidth);

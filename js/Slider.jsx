@@ -36,6 +36,7 @@ var Slider = React.createClass({
     },
 
     updateWidth: function() {
+        console.log('slider updateWidth');
         var rootContainer = this.refs.sliderRoot || {};
         var rootContainerWidth = rootContainer.clientWidth;
         if (!isNaN(rootContainerWidth)) {
@@ -88,7 +89,7 @@ var Slider = React.createClass({
         return r;
     },
     componentWillUpdate: function(nextProps, nextState) {
-        console.log('slider!!!!');
+        console.log('slider componentWillUpdate');
         var x0 = parseFloat(this.state.left)/100;
         var x1 = parseFloat(nextState.left)/100;
         // inc/dec all event from x0~x1
