@@ -84,7 +84,7 @@ var TimeAxis = React.createClass({
     },
 
     updateWidth: function() {
-        console.log('timeAxis updateWidth');
+        //console.log('timeAxis updateWidth');
         var rootContainer = this.refs.rootContainer || {};
         var rootContainerWidth = rootContainer.clientWidth;
         // debug('updateWidth(), rootContainer width:', rootContainerWidth);
@@ -154,7 +154,7 @@ var TimeAxis = React.createClass({
     },
 
     render: function() {
-        console.log('timeAxis rerender ', this.props.tsLeft, this.props.tsRight);
+        //console.log('timeAxis rerender ', this.props.tsLeft, this.props.tsRight);
         //
         var span = this.props.tsRight - this.props.tsLeft;
         var minTime = this.props.minScaleWidth / this.state.width * span;

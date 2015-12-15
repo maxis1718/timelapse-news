@@ -28,7 +28,7 @@
                 var events = [];
                 // kill events without lat/lon
                 data.forEach(function(d) {
-                    if (d && d.geo && d.geo.latitude && d.geo.longtitude) {
+                    if (d && d.geo && !isNaN(d.geo.latitude) && !isNaN(d.geo.longtitude)) {
                         events.push(d);
                     }
                 });
