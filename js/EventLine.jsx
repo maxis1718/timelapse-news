@@ -168,6 +168,12 @@ var EventLine = React.createClass({
         var info = this.calculateRenderedEvent();
         var divs = this.calculateRenderedDiv(info);
         var eventQueue = this.generateEventQueue(info.events);
+        //
+        document.dispatchEvent(new CustomEvent(
+            'leak_events',
+            { 'detail': { es: info.events }  }
+        ));
+        //
         var initLeft;
         var slider;
         if(eventQueue.length) {
