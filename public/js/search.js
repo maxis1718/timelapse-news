@@ -40,10 +40,10 @@
                     'initiate_events',
                     { 'detail': { es: events } }
                 ));
-                document.dispatchEvent(new CustomEvent(
-                    'leak_events',
-                    { 'detail': { es: events}  }
-                ));
+                //document.dispatchEvent(new CustomEvent(
+                    //'leak_events',
+                    //{ 'detail': { es: events}  }
+                //));
             });
         });
 

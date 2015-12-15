@@ -114,6 +114,7 @@ function calculateOptimalViewBase(n, minLng, maxLng, minLat, maxLat) {
     var latRatio = Math.max(180/latSpan, 1);
     var ratio = Math.min(lngRatio, latRatio);
     var zoom = Math.floor(Math.log2(ratio));
+    console.log(minLng, maxLng, minLat, maxLat);
     console.log(lngSpan, latSpan, ratio, zoom);
     return {
         center: {
@@ -197,6 +198,7 @@ function MapMonster(params) {
         //console.log('receive:', eventObj);
         eventObj.geo.latitude = parseFloat(eventObj.geo.latitude);
         eventObj.geo.longtitude = parseFloat(eventObj.geo.longtitude);
+        // console.log('latlon', eventObj.geo.latitude, eventObj.geo.longtitude);
         var latlng = new google.maps.LatLng(eventObj.geo.latitude, eventObj.geo.longtitude);
 
         oMap.setCenter(eventObj.geo.latitude, eventObj.geo.longtitude);

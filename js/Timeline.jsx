@@ -51,15 +51,18 @@ var Timeline = React.createClass({
         } else {
             rearPadding = (initState.tsLastEnd - initState.tsFirstStart)/(initState.events.length);
         }
+        //
+        minFixedSpan = (initState.tsLastEnd-initState.tsFirstStart)/12; // 8%
+        for (var i=0; i<initState.events.length; i++) {
+            initState.events[i].toTS = Math.max(initState.events[i].fromTS+minFixedSpan, initState.events[i].toTS);
+        }
         //console.log(rearPadding);
+        initState.tsFirstStart = Math.min(...initState.events.map(function(x) { return x.fromTS; }));
+        initState.tsLastEnd = Math.max(...initState.events.map(function(x) { return x.toTS; }));
         initState.tsLeft = initState.tsFirstStart - rearPadding;
         initState.tsRight = initState.tsLastEnd + rearPadding;
         initState.tsFocus = initState.tsLeft;
         //console.log(initState);
-        minFixedSpan = (initState.tsRight-initState.tsLeft)/12; // 8%
-        for (var i=0; i<initState.events.length; i++) {
-            initState.events[i].toTS = Math.max(initState.events[i].fromTS+minFixedSpan, initState.events[i].toTS);
-        }
         return initState;
     },
 
