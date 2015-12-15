@@ -3,6 +3,7 @@
     padding: 16px;
     color: #343434;
     font-weight: 300;
+    overflow: hidden;
 }
 .info-card .image-wrap {
 
@@ -35,6 +36,8 @@
 }
 .info-card .abstract-wrap .abtract-text {
     text-align: justify;
+    max-height: 256px;
+    overflow: hidden;
 }
 .info-card footer {
 

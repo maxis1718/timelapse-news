@@ -6,7 +6,7 @@ var EventLine = React.createClass({
     getDefaultProps: function() {
         return {
             maxRows: 2,
-            height: 128,
+            height: 96,
             yEventDisplace: 5,
             minEventWidth: 64,
             tsLeft: 0,
@@ -105,7 +105,7 @@ var EventLine = React.createClass({
                 res.push({
                     r: r,
                     x: (e.fromTS-self.props.tsLeft) / span * self.state.width,
-                    w: (e.toTS-e.fromTS) / span * self.state.width,
+                    w: Math.max((e.toTS-e.fromTS) / span * self.state.width,64),
                     text: e.newsContent.title || ''
                 });
                 es.push(e);
