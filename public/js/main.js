@@ -169,6 +169,9 @@ function MapMonster(params) {
     };
 
     oMap.composeContent = function(eventObj) {
+        if (eventObj.newsContent.abstract.indexOf('UNKOWN') > -1){
+            eventObj.newsContent.abstract = '';
+        }
         var cardPayload = {
             title: eventObj.newsContent.title,
             date: eventObj.time.from,
