@@ -219,7 +219,9 @@ function MapMonster(params) {
         }, 400);
 
         var infowindow = new google.maps.InfoWindow({
-            content: oMap.composeContent(eventObj),
+            content: '<div class="scrollFix" style="overflow: hidden">'
+                + oMap.composeContent(eventObj)
+                + '</div>',
             maxWidth: 300
         });
 
