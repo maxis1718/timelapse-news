@@ -20,7 +20,7 @@ p {
 }
 
 #wrapper {
-    padding: 64px 0 180px 0;
+    padding: 64px 0 148px 0;
     position:absolute;
     top:0;
     bottom:0;
@@ -86,8 +86,8 @@ p {
 }
 
 tlfooter {
-    margin-bottom: -180px;
-    height: 180px;
+    margin-bottom: -148px;
+    height: 148px;
     position: relative;
 }
 
@@ -110,7 +110,7 @@ tlfooter {
     border: 0;
     text-align: right;
     font-size: 1em;
-    width: 100px;
+    width: 118px;
     outline: none;
     color: #eee;
     margin-top: 5px;
